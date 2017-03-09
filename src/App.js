@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import NavBar from './NavBar';
+
 require('dotenv').config()
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
@@ -7,7 +9,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      loading: true
     }
   }
 
@@ -21,15 +24,13 @@ class App extends Component {
     };
     fetch('https://api.vimeo.com/users/user58377879/videos', init)
       .then(response => response.json())
-      .then(data => this.setState({ data: data.data }))
+      .then(data => this.setState({ data: data.data, loading: false }));
   }
 
   render() {
-    let videoNames = this.state.data.map(item => item.name);
-    console.log(videoNames);
     return (
       <div className="App">
-        <h1>Hello world</h1>
+        <NavBar data={this.state.data} loading={this.state.loading} />
       </div>
     );
   }
