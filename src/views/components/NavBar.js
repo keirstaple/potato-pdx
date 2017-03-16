@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { fetchData } from '../actions';
+import { fetchData } from '../../actions';
 import { Link } from 'react-router';
 
 class NavBar extends Component {
