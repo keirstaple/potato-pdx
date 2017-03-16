@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { fetchData } from '../actions';
+import { Link } from 'react-router';
 
 class NavBar extends Component {
   constructor(props) {
@@ -6,10 +9,16 @@ class NavBar extends Component {
     this.renderList = this.renderList.bind(this);
   }
 
+  componentWillMount() {
+    //grabs posts when component loads
+    this.props.fetchData();
+  }
+
   renderList() {
-    return this.props.data.map((item, idx) => {
+    console.log('props ', this.props);
+    return this.props.videos.map((item, idx) => {
       return(
-        <li key={idx}>{item.name}</li>
+        <Link to={`/${item.name}`} key={idx}>{item.name}</Link>
       )
     });
   }
@@ -39,4 +48,9 @@ NavBar.contextTypes = {
   router: React.PropTypes.object
 }
 
-export default NavBar;
+function mapStateToProps(state) {
+  console.log('state ', state)
+  return { videos: state.videos.data };
+}
+
+export default connect(mapStateToProps, { fetchData })(NavBar);
