@@ -7,6 +7,7 @@ const Root = ({ store, routes, history }) => (
   <Provider store={store}>
     <div>
       <Router routes={routes} history={history} />
+      <h1>hello from root</h1>
       <DevTools />
     </div>
   </Provider>

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import dataReducer from './reducer_data';
+import { routerReducer } from 'react-router-redux';
+import app from './app.js';
 
 const rootReducer = combineReducers({
-  videos: dataReducer
+  routing: routerReducer,
+  app,
 });
 
 export default rootReducer;

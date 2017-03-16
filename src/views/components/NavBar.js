@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { fetchData } from '../../actions';
 import { Link } from 'react-router';
+
+import { getVideosThunk, appData } from './../../state';
 
 class NavBar extends Component {
   constructor(props) {
@@ -11,12 +12,13 @@ class NavBar extends Component {
 
   componentWillMount() {
     //grabs posts when component loads
-    this.props.fetchData();
+    this.props.getVideos();
+    console.log('sent for data');
   }
 
   renderList() {
     console.log('props ', this.props);
-    return this.props.videos.map((item, idx) => {
+    return this.props.data.map((item, idx) => {
       return(
         <Link to={`/${item.name}`} key={idx}>{item.name}</Link>
       )
@@ -44,13 +46,15 @@ class NavBar extends Component {
   }
 }
 
-NavBar.contextTypes = {
-  router: React.PropTypes.object
-}
+// NavBar.contextTypes = {
+//   router: React.PropTypes.object
+// }
 
-function mapStateToProps(state) {
-  console.log('state ', state)
-  return { videos: state.videos.data };
-}
-
-export default connect(mapStateToProps, { fetchData })(NavBar);
+export default connect(
+  (state) => ({
+    data: appData(state)
+  }),
+  dispatch => ({
+    getVideos: () => dispatch(getVideosThunk())
+  })
+)(NavBar);

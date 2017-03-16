@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+import { Route, Router } from 'react-router';
 
-import App from './components/App';
-import VideoPlayer from './components/VideoPlayer';
+import App from './views';
+import VideoPlayer from './views';
 
-export default (
-  <Router history={browserHistory} routes={routes} >
-    <Route path="/" component={App}>
-      <IndexRoute component={App} />
-      <Route path="videos/:id" component={VideoPlayer} />
-    </Route>
+const routes = (history) => (
+  <Router history={history}>
+    <Route path="/" component={App} />
+    <Route path="/videos/:id" component={VideoPlayer} />
   </Router>
 );
+
+export default routes;
