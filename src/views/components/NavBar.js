@@ -25,7 +25,7 @@ class NavBar extends Component {
     });
   }
 
-  render(){
+  render() {
     let title = "Potato // Potato";
     return (
       <div>

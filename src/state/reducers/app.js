@@ -12,7 +12,7 @@ export const initializeApp = () => ({ type: INIT_APP });
 //vimeo actions
 export const getVideos = payload => ({ type: FETCH_VIMEO_DATA, payload });
 export const getVideosSuccess = payload => ({ type: FETCH_VIMEO_DATA_SUCCESS, payload });
-export const getVideosFailure = payload => ({ type: FETCH_VIMEO_DATA_FAILURE, payload });
+export const getVideosFailure = error => ({ type: FETCH_VIMEO_DATA_FAILURE, error });
 
 //thunks
 export const getVideosThunk = () => dispatch => {
@@ -28,6 +28,7 @@ const reducer = (state = INITIAL_STATE, action) => {
   console.log('reducer')
   switch(action.type) {
     case INIT_APP:
+      console.log('inside init case')
       return {
         ...state,
         appInitialized: true

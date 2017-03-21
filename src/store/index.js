@@ -6,6 +6,7 @@ import rootReducer from '../state/reducers';
 import DevTools from '../views/DevTools';
 
 const configureStore = (initialState = {}, history) => {
+  console.log('inside store')
   const middlewares = [thunk, routerMiddleware(history), createLogger()];
   const enhancers = [applyMiddleware(...middlewares, ), DevTools.instrument()];
   const store = createStore(
