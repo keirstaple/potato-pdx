@@ -1,8 +1,9 @@
 import { initializeApp, getVideosThunk } from './reducers/app';
-import { videoData } from './selectors';
+import { videoData, videoId } from './selectors';
 
 export {
   initializeApp,
   getVideosThunk,
-  videoData
+  videoData,
+  videoId
 };
