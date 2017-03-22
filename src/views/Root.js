@@ -6,9 +6,7 @@ import DevTools from './DevTools';
 const Root = ({ store, routes, history }) => (
   <Provider store={store}>
     <div>
-      <h2>Hello from Root pt 1</h2>
       <Router routes={routes} history={history} />
-      <h1>hello from root</h1>
       <DevTools />
     </div>
   </Provider>

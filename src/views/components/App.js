@@ -15,8 +15,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Hi from App</h1>
-        <h3>hello there</h3>
         <NavBar />
         { this.props.children }
       </div>

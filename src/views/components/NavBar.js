@@ -18,12 +18,13 @@ class NavBar extends Component {
 
   renderList() {
     console.log('props ', this.props);
-    // console.log('state', state);
-    return this.props.videos.map((item, idx) => {
-      return(
-        <Link to={`/${item.name}`} key={idx}>{item.name}</Link>
-      )
-    });
+    if(this.props.videos) {
+      return this.props.videos.map((item, idx) => {
+        return(
+          <Link to={`/${item.name}`} key={idx}>{item.name}</Link>
+        )
+      });
+    }
   }
 
   render() {
@@ -47,9 +48,9 @@ class NavBar extends Component {
   }
 }
 
-// NavBar.contextTypes = {
-//   router: React.PropTypes.object
-// }
+NavBar.contextTypes = {
+  router: React.PropTypes.object
+}
 
 export default connect(
   (state) => ({
