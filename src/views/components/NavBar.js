@@ -18,7 +18,8 @@ class NavBar extends Component {
 
   renderList() {
     console.log('props ', this.props);
-    return this.props.data.map((item, idx) => {
+    // console.log('state', state);
+    return this.props.videos.map((item, idx) => {
       return(
         <Link to={`/${item.name}`} key={idx}>{item.name}</Link>
       )
@@ -52,7 +53,7 @@ class NavBar extends Component {
 
 export default connect(
   (state) => ({
-    data: appData(state)
+    videos: state.app.videos.data
   }),
   dispatch => ({
     getVideos: () => dispatch(getVideosThunk())

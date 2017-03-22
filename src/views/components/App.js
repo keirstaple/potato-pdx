@@ -8,14 +8,15 @@ class App extends Component {
     console.log('hello?')
   }
   componentDidMount() {
-    this.props.initializeApp();
     console.log('app mounted');
+    this.props.initializeApp();
   }
 
   render() {
     return (
       <div className="App">
         <h1>Hi from App</h1>
+        <h3>hello there</h3>
         <NavBar />
         { this.props.children }
       </div>

@@ -17,7 +17,9 @@ const configureStore = (initialState = {}, history) => {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
+    console.log('hot module')
     module.hot.accept('../state/reducers', () => {
+      console.log('module hot accept')
       const nextRootReducer = require('../state/reducers').default
       store.replaceReducer(nextRootReducer)
     })

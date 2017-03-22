@@ -3,6 +3,7 @@ require('dotenv').config()
 
 const ROOT_URL = 'https://api.vimeo.com/users/user58377879/videos';
 const token = process.env.REACT_APP_ACCESS_TOKEN;
+
 console.log(token);
 
 const promiseToFetch = (url, init) => fetch(url, init).then(response => {
@@ -15,8 +16,8 @@ const promiseToFetch = (url, init) => fetch(url, init).then(response => {
   });
 });
 
-export function fetchData() {
-  console.log('inside fetchData')
+export const fetchData = () => {
+  console.log('inside fetchData');
   const url = `${ROOT_URL}`;
   const init = {
     headers: {
