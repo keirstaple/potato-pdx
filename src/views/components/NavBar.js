@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { getVideosThunk, appData } from './../../state';
+import { getVideosThunk, videoData } from './../../state';
 
 class NavBar extends Component {
   constructor(props) {
@@ -17,11 +17,14 @@ class NavBar extends Component {
   }
 
   renderList() {
-    console.log('props ', this.props);
     if(this.props.videos) {
       return this.props.videos.map((item, idx) => {
+        console.log('item', item);
         return(
-          <Link to={`videos/${item.name}`} key={idx}>{item.name}</Link>
+          <div key={idx}>
+            <Link to={`${item.uri}`} key={idx}>{item.name}</Link>
+            <br></br>
+          </div>
         )
       });
     }
@@ -54,7 +57,7 @@ NavBar.contextTypes = {
 
 export default connect(
   (state) => ({
-    videos: state.app.videos.data
+    videos: videoData(state)
   }),
   dispatch => ({
     getVideos: () => dispatch(getVideosThunk())
