@@ -23,6 +23,9 @@ class App extends Component {
 }
 
 export default connect(
+  (state) => ({
+    appInitialized: state.app.appInitialized
+  }),
   dispatch => ({
     initializeApp: () => dispatch(initializeApp())
   })

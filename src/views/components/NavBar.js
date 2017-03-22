@@ -21,7 +21,7 @@ class NavBar extends Component {
     if(this.props.videos) {
       return this.props.videos.map((item, idx) => {
         return(
-          <Link to={`/${item.name}`} key={idx}>{item.name}</Link>
+          <Link to={`videos/${item.name}`} key={idx}>{item.name}</Link>
         )
       });
     }
