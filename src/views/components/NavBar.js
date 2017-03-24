@@ -22,7 +22,7 @@ class NavBar extends Component {
         console.log('item', item);
         return(
           <div key={idx}>
-            <Link to={`${item.uri}`} key={idx}>{item.name}</Link>
+            <Link to={`${item.uri}`} key={idx} style={{color: '#B2B0B0', textDecoration: 'none'}} activeStyle={{color: 'black'}}>{item.name}</Link>
             <br></br>
           </div>
         )
