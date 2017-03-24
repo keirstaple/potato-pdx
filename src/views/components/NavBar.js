@@ -35,7 +35,7 @@ class NavBar extends Component {
     return (
       <div>
         <div>
-          <h2>{title}</h2>
+          <Link to={'/'}>{title}</Link>
           <div className="client-section">
             <h3>Client</h3>
             <ul>
