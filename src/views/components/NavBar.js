@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { getVideosThunk, videoData } from './../../state';
+import { getVideosThunk, videoData, pathName } from './../../state';
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isOpen: false
+    }
     this.renderList = this.renderList.bind(this);
   }
 
@@ -14,6 +17,20 @@ class NavBar extends Component {
     //grabs posts when component loads
     this.props.getVideos();
     console.log('sent for data');
+  }
+
+  componentDidMount() {
+    if(this.props.pathname.includes('videos')) {
+      this.setState({
+        isOpen: true
+      })
+    }
+  }
+
+  handleClick() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
 
   renderList() {
@@ -32,15 +49,19 @@ class NavBar extends Component {
 
   render() {
     let title = "Potato // Potato";
+    let menu = null;
+    if(this.state.isOpen) {
+      menu = <ul>{ this.renderList() }</ul>;
+    } else {
+      menu = null;
+    }
     return (
       <div>
         <div>
           <Link to={'/'}>{title}</Link>
           <div className="client-section">
-            <h3>Client</h3>
-            <ul>
-              { this.renderList() }
-            </ul>
+            <h3 onClick={this.handleClick.bind(this)}>Client</h3>
+              { menu }
           </div>
         </div>
         <div className="personal-section">
@@ -57,7 +78,8 @@ NavBar.contextTypes = {
 
 export default connect(
   (state) => ({
-    videos: videoData(state)
+    videos: videoData(state),
+    pathname: pathName(state)
   }),
   dispatch => ({
     getVideos: () => dispatch(getVideosThunk())
