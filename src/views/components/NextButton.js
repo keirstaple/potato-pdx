@@ -22,11 +22,13 @@ class NextButton extends Component {
 
   nextVideo(videos, pathname) {
     let matchingUri = []
+    console.log(videos.length)
     for(let i = 0; i < videos.length; i++) {
-      if(videos[i].uri === pathname) {
+      if(videos[i].uri === pathname && i !== videos.length-1) {
         matchingUri.push(videos[i+1].uri);
-      } else {
+      } else if(i === videos.length-1) {
         console.log('else')
+        matchingUri.push(videos[0].uri)
       }
     }
     return this.context.router.push(`${matchingUri[0]}`);
