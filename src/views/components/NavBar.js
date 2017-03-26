@@ -35,7 +35,7 @@ class NavBar extends Component {
 
   renderList() {
     if(this.props.videos) {
-      return this.props.videos.sort(function(a, b){
+      return this.props.videos.sort((a, b) => {
         if(a.name < b.name) return -1;
         if(a.name > b.name) return 1;
         return 0;

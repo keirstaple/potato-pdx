@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import NavBar from './NavBar';
+import { NavBar, Logo } from './../index';
 import { initializeApp } from './../../state';
 
 class App extends Component {
@@ -17,6 +17,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         { this.props.children }
+        <Logo />
       </div>
     );
   }
