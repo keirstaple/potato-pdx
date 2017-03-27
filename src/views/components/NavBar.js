@@ -55,21 +55,19 @@ class NavBar extends Component {
     let title = "Potato//Potato";
     let menu = null;
     if(this.state.isOpen) {
-      menu = <ul>{ this.renderList() }</ul>;
+      menu = <ul style={{margin: '0', padding: '10px'}}>{ this.renderList() }</ul>;
     } else {
       menu = null;
     }
     return (
-      <div>
-        <div>
-          <Link to={'/'} style={{color: 'black', textDecoration: 'none', size: '1.25em'}}>{title}</Link>
-          <div className="client-section">
-            <h3 onClick={this.handleClick.bind(this)} style={{cursor: 'pointer', maxWidth: '75px'}}>Client</h3>
-            { menu }
-          </div>
+      <div className="navigation-bar" style={{border: 'solid black', maxWidth: '225px', margin: '5vh 0 0 2.5vw'}}>
+        <Link to={'/'} style={{color: 'black', textDecoration: 'none', fontSize: '1.5em', fontWeight: 'bold'}}>{title}</Link>
+        <div className="client-section" style={{marginTop: '10px'}}>
+          <h3 onClick={this.handleClick.bind(this)} style={{cursor: 'pointer', maxWidth: '75px', margin: '0'}}>Client</h3>
+          { menu }
         </div>
         <div className="personal-section">
-
+          <h3 style={{cursor: 'pointer', maxWidth: '75px', margin: '0'}}>Personal</h3>
         </div>
       </div>
     );
