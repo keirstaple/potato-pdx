@@ -9,7 +9,7 @@ import { videoId } from './../../state';
 class VideoPlayer extends Component {
   renderVideo() {
     return(
-      <ReactPlayer url={`https://vimeo.com/${this.props.videoId}`} height='500' width='800' />
+      <ReactPlayer url={`https://vimeo.com/${this.props.videoId}`} height='500px' width='800px' />
     )
   }
 

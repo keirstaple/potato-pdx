@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
+import FontAwesome from 'react-fontawesome';
 
 import { videoData, pathName } from '../../state';
 
@@ -27,8 +28,13 @@ class NextButton extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleClick.bind(this)}>Next</button>
+      <div style={{margin: '0', marginTop: '50vh', marginLeft: '10px', cursor: 'pointer'}}>
+        <FontAwesome
+          className="chevron-right-icon"
+          name="chevron-right"
+          style={{color: 'black'}}
+          onClick={this.handleClick.bind(this)}
+        />
       </div>
     );
   }

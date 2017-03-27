@@ -60,7 +60,7 @@ class NavBar extends Component {
       menu = null;
     }
     return (
-      <div className="navigation-bar" style={{border: 'solid black', maxWidth: '225px', margin: '5vh 0 0 2.5vw'}}>
+      <div className="navigation-bar" style={{maxWidth: '225px', margin: '5vh 0 0 2.5vw'}}>
         <Link to={'/'} style={{color: 'black', textDecoration: 'none', fontSize: '1.5em', fontWeight: 'bold'}}>{title}</Link>
         <div className="client-section" style={{marginTop: '10px'}}>
           <h3 onClick={this.handleClick.bind(this)} style={{cursor: 'pointer', maxWidth: '75px', margin: '0'}}>Client</h3>
