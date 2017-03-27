@@ -8,9 +8,11 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      linkColor: 'black'
     }
     this.renderList = this.renderList.bind(this);
+    this.changeLinkColor = this.changeLinkColor.bind(this);
   }
 
   componentWillMount() {
@@ -33,6 +35,12 @@ class NavBar extends Component {
     });
   }
 
+  changeLinkColor(linkColor) {
+    this.setState({
+      linkColor
+    })
+  }
+
   renderList() {
     if(this.props.videos) {
       return this.props.videos.sort((a, b) => {
@@ -43,7 +51,7 @@ class NavBar extends Component {
         console.log('item', item);
         return(
           <div key={idx}>
-            <Link to={`${item.uri}`} key={idx} style={{color: '#B2B0B0', textDecoration: 'none'}} activeStyle={{color: 'black'}}>{item.name}</Link>
+            <Link to={`${item.uri}`} onClick={() => this.changeLinkColor('#B2B0B0')} key={idx} style={{color: this.state.linkColor, textDecoration: 'none'}} activeStyle={{color: 'black'}}>{item.name}</Link>
             <br></br>
           </div>
         )
@@ -61,7 +69,7 @@ class NavBar extends Component {
     }
     return (
       <div className="navigation-bar" style={{maxWidth: '225px', margin: '5vh 0 0 2.5vw'}}>
-        <Link to={'/'} style={{color: 'black', textDecoration: 'none', fontSize: '1.5em', fontWeight: 'bold'}}>{title}</Link>
+        <Link onClick={() => this.changeLinkColor('black')} to={'/'} style={{color: 'black', textDecoration: 'none', fontSize: '1.5em', fontWeight: 'bold'}}>{title}</Link>
         <div className="client-section" style={{marginTop: '10px'}}>
           <h3 onClick={this.handleClick.bind(this)} style={{cursor: 'pointer', maxWidth: '75px', margin: '0'}}>Client</h3>
           { menu }
