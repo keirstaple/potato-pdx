@@ -3,7 +3,7 @@ import React from 'react';
 const Logo = () => {
   return(
     <div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 689.86 411.36" style={{height: '50vh', width: 'auto'}}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 689.86 411.36" style={{height: '25vh', width: 'auto', marginLeft: '40%', marginTop: '15%'}}>
         <title>Final</title>
         <g class="cls-1" style={{isolation: 'isolate'}}>
           <g id="Layer_1" data-name="Layer 1">

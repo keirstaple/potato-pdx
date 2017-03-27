@@ -52,7 +52,7 @@ class NavBar extends Component {
   }
 
   render() {
-    let title = "Potato // Potato";
+    let title = "Potato//Potato";
     let menu = null;
     if(this.state.isOpen) {
       menu = <ul>{ this.renderList() }</ul>;
@@ -62,10 +62,10 @@ class NavBar extends Component {
     return (
       <div>
         <div>
-          <Link to={'/'}>{title}</Link>
+          <Link to={'/'} style={{color: 'black', textDecoration: 'none', size: '1.25em'}}>{title}</Link>
           <div className="client-section">
-            <h3 onClick={this.handleClick.bind(this)}>Client</h3>
-              { menu }
+            <h3 onClick={this.handleClick.bind(this)} style={{cursor: 'pointer', maxWidth: '75px'}}>Client</h3>
+            { menu }
           </div>
         </div>
         <div className="personal-section">
