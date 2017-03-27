@@ -18,7 +18,6 @@ class NavBar extends Component {
   componentWillMount() {
     //grabs posts when component loads
     this.props.getVideos();
-    console.log('sent for data');
   }
 
   componentDidMount() {
