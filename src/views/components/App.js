@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { VideoColumns } from './../index';
+import { VideoColumns, VideoPlayer } from './../index';
 import { initializeApp } from './../../state';
 
 class App extends Component {

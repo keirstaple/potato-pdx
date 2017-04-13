@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
 
-// import { NavBar, NextButton } from '../index';
+import { VideoColumns } from '../index';
 
 import { videoId } from './../../state';
 
@@ -15,8 +15,9 @@ class VideoPlayer extends Component {
 
   render() {
     return(
-      <div style={{display: 'flex'}}>
-        <div style={{marginLeft: '25px', marginTop: '80px'}}>
+      <div>
+        <VideoColumns />
+        <div style={{position: 'absolute', top: '50%', left: '50%', marginTop: '-250px', marginLeft: '-350px'}}>
           { this.renderVideo() }
         </div>
       </div>
