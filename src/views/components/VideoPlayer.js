@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
 
-import { NavBar, NextButton } from '../index';
+// import { NavBar, NextButton } from '../index';
 
 import { videoId } from './../../state';
 
@@ -16,11 +16,9 @@ class VideoPlayer extends Component {
   render() {
     return(
       <div style={{display: 'flex'}}>
-        <NavBar />
         <div style={{marginLeft: '25px', marginTop: '80px'}}>
           { this.renderVideo() }
         </div>
-        <NextButton />
       </div>
     )
   }

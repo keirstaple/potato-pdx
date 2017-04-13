@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router';
 import { getVideosThunk, videoData } from './../../state';
 
 class VideoColumns extends Component {
@@ -22,9 +22,8 @@ class VideoColumns extends Component {
       const thumbnail = item.pictures.sizes[5].link;
       const columnWidth = 100 / featuredVideos.length
       return(
-        <div key={idx} style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`}}>
-
-        </div>
+          <Link to={`${item.uri}`} key={idx} style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`}}>
+          </Link>
       )
     });
   }
