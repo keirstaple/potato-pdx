@@ -15,18 +15,20 @@ class VideoColumns extends Component {
         if(item.tags.filter(tag => tag.name.includes('feature')).length > 0) {
           return item
         }
-      }).filter(item => item !== undefined)
+        return null;
+      }).filter(item => item !== null)
     }
     console.log('featuredVideos', featuredVideos)
     return featuredVideos.map((item, idx) => {
       const thumbnail = item.pictures.sizes[5].link;
       const columnWidth = 100 / featuredVideos.length
       return(
-          <Link to={`${item.uri}`} key={idx} style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`}}>
+          <Link className="video-column" to={`${item.uri}`} key={idx} style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`}}>
           </Link>
       )
     });
   }
+
   render() {
     return (
       <div style={{display: 'flex'}}>
