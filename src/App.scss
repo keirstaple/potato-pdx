@@ -1,5 +1,8 @@
 .video-column {
+  transition: all .2s ease-in-out;
   &:hover{
-    border: solid black 5px;
+    // box-shadow: 10px 10px 10px #888888;
+    z-index: 2;
+    transform: scale(1.1);
   }
 }
