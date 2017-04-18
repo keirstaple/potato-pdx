@@ -8,30 +8,16 @@ class VideoColumns extends Component {
     super()
     this.state = { }
   }
+
   componentWillMount() {
     //grabs posts when component loads
     this.props.getVideos();
   }
+
   hoverEvent(value, idx) {
-    // console.log('idx', idx);
-    // const linkDisplay = `linkDisplay${idx}`;
-    // console.log('linkDisplay', linkDisplay);
-    // const stateDisplay = 'this.state.linkDisplay'+idx;
-    // console.log('stateDisplay', stateDisplay)
-    // if(stateDisplay === 'none') {
-    //   this.setState({ [linkDisplay]: 'block' })
-    //   console.log('state', this.state)
-    // } else {
-    //   this.setState({ [linkDisplay]: 'none' })
-    //   console.log('state', this.state)
-    // }
-    if(value === undefined) {
-      value = 'none'
-    }
     this.setState({ [idx]: value })
-    console.log(value);
-    return value
   }
+
   renderList() {
     let featuredVideos = [];
     if (this.props.videos) {
@@ -42,14 +28,11 @@ class VideoColumns extends Component {
         return null;
       }).filter(item => item !== null)
     }
-    console.log('featuredVideos', featuredVideos)
+
     return featuredVideos.map((item, idx) => {
       const thumbnail = item.pictures.sizes[5].link;
       const columnWidth = 100 / featuredVideos.length
-      // let displayVersion = this.hoverEvent();
-      // console.log('displayVersion', displayVersion)
       const displayVersion = this.state[idx] || 'none';
-      console.log('displayVersion', displayVersion)
       return(
           <div
             className="video-column"
