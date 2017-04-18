@@ -40,8 +40,12 @@ class VideoColumns extends Component {
             key={idx}
             onMouseOver={() => this.hoverEvent('block', idx)}
             onMouseOut={() => this.hoverEvent('none', idx)}
-            style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`}}>
-            <Link className="video-column" style={{display: `${displayVersion}`, color: 'white', border: 'solid 5px white'}}>Watch Me</Link>
+            style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`, position: 'relative'}} >
+            <Link
+              className="video-column-link"
+              style={{display: `${displayVersion}`, color: 'white', border: 'solid 5px white', fontStyle: 'italic', width: '100px', height: 'auto', margin: '0 auto', position: 'absolute', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)', textAlign: 'center'}} >
+              Watch Me
+            </Link>
           </div>
       )
     });
