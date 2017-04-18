@@ -1,22 +1,18 @@
 .video-column {
-  transition: all .2s ease-in-out;
+  transition: all .5s ease-in-out;
   &:hover {
     z-index: 2;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
-    background: linear-gradient(
-      rgba(255, 0, 0, 0.45),
-      rgba(255, 0, 0, 0.45)
-    ),
   }
 }
 
 .video-column-link {
   transition: all .5s ease-in-out;
   color: white;
-  border: solid 5px white;
   font-weight: bold;
+  border: solid white 5px;
   &:hover {
     color: black;
     background-color: white;

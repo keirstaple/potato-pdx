@@ -31,7 +31,7 @@ class VideoPlayer extends Component {
             className="times-icon"
             name="window-close-o"
             size="2x"
-            style={{color: 'white', position: 'absolute', left: '50%', top: '50%', marginLeft: '40vw', marginTop: '-40vh', zIndex: '2'}}
+            style={{color: 'white', position: 'absolute', left: '50%', top: '50%', marginLeft: '40vw', marginTop: '-40vh', zIndex: '2', cursor: 'pointer'}}
             onClick={this.handleClick.bind(this)}
           />
           { this.renderVideo() }

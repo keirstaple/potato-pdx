@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getVideosThunk, videoData } from './../../state';
+import FontAwesome from 'react-fontawesome';
 
 class VideoColumns extends Component {
   constructor() {
