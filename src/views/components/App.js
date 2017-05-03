@@ -8,12 +8,16 @@ class App extends Component {
     super();
     this.state = {
       transform: -85,
+      scroll: 0,
     }
   }
 
   componentDidMount() {
     console.log('app mounted');
     window.addEventListener('scroll', this.handleScroll.bind(this));
+    // let scrollHeight = document.getElementById("root").scrollHeight;
+    // scrollHeight =  scrollHeight + window.innerHeight
+    // console.log('height', scrollHeight)
     this.props.initializeApp();
   }
 
@@ -22,19 +26,24 @@ class App extends Component {
   }
 
   handleScroll(event) {
-    // event.srcElement.body.scrollTop = event.srcElement.body.scrollTop - this.state.transform;
     let scrollTop = event.srcElement.body.scrollTop;
+    let scrollPosition = this.state.scroll;
+
     let itemTranslate = () => {
       let transform = this.state.transform;
-      if(transform < 0) {
+      if(transform < 0 && scrollTop > scrollPosition) {
         transform++;
-        this.setState({ transform })
+        this.setState({ transform, scroll: scrollTop })
+      } else if(transform <= 0 && scrollTop < scrollPosition) {
+        transform--;
+        this.setState({ transform, scroll: scrollTop})
       }
       return transform;
     };
 
     itemTranslate()
-    console.log('scroll', scrollTop);
+    console.log('scrollTop', scrollTop);
+    console.log('scrollPosition', scrollPosition);
     console.log('translate', itemTranslate);
     console.log('state', this.state.transform);
     // this.setState({
@@ -43,8 +52,9 @@ class App extends Component {
   }
 
   render() {
+    let scrollHeight = window.innerHeight * 2;
     return (
-      <div className="App" style={{ position: 'relative' }}>
+      <div className="App" style={{ height: `${scrollHeight}`, position: 'relative'}}>
         <About position={this.state.transform} />
         <VideoColumns />
         { this.props.children }
