@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getVideosThunk, videoData } from './../../state';
-import FontAwesome from 'react-fontawesome';
+// import FontAwesome from 'react-fontawesome';
 
 class VideoColumns extends Component {
   constructor() {
@@ -37,6 +37,7 @@ class VideoColumns extends Component {
       return(
         <div
           className="video-column"
+          ref="VideoColumns"
           key={idx}
           onMouseOver={() => this.hoverEvent('block', idx)}
           onMouseOut={() => this.hoverEvent('none', idx)}

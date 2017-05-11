@@ -9,7 +9,7 @@ class About extends Component {
   // }
   render() {
     return (
-      <div style={{ height: '90vh', width: '100vw', zIndex: '4', backgroundColor: 'white'}}>
+      <div>
         <h1>About Us</h1>
       </div>
     );
