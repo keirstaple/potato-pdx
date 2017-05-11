@@ -8,6 +8,7 @@ class App extends Component {
   static propTypes = {
     children: React.PropTypes.object,
     speed: React.PropTypes.number,
+    angle: React.PropTypes.number,
 
     // Style
     width: React.PropTypes.string,
@@ -20,15 +21,21 @@ class App extends Component {
   static defaultProps = {
     width: 'auto',
     height: 'auto',
-    top: -80,
+    top: -95,
     left: 'inherit',
     right: 'inherit',
     speed: -0.03,
+    angle: 100,
   }
 
   constructor() {
     super();
     this.handleScroll = throttle(this.handleScroll.bind(this), 5);
+  }
+
+  componentWillMount() {
+    window.scrollTo(0,0);
+    document.body.scrollTop = 0;
   }
 
   componentDidMount() {
@@ -41,26 +48,31 @@ class App extends Component {
   }
 
   handleScroll(event) {
-    const { speed } = this.props;
-    const top = this.props.top;
-    // Top positons
+    const { speed, top, angle } = this.props;
 
+    // Top positons
     //multiply by .65 to convert pixels to vh
     const pageTop = window.pageYOffset * 0.65;
     const newTop = (top - (pageTop * speed));
 
-    console.log('newTop' , newTop)
+    const newAngle = (newTop / 0.053) * -1;
 
-    if(newTop < -0.15) {
+    console.log('newTop' , newTop, 'newangle', newAngle)
+
+    if(newTop < -2.5) {
       this.refs.aboutSection.style.top = `${newTop}vh`;
+    }
+
+    if(angle >= 50) {
+     this.refs.aboutSection.style.clipPath = `polygon(0 0, 100% 0, 100% 100%, 0 ${newAngle}%)`
     }
   }
 
   render() {
-    let scrollHeight = window.innerHeight * 6.75;
+    let scrollHeight = window.innerHeight * 7.75;
     return (
       <div className="App" style={{ height: `${scrollHeight}`, position: 'relative'}}>
-        <div ref="aboutSection" style={{ height: '90vh', top: '-80vh', width: '100vw', position: 'fixed', zIndex: '4', backgroundColor: 'white'}}>
+        <div ref="aboutSection" style={{ height: '101.5vh', top: '-95vh', width: '100vw', position: 'fixed', zIndex: '4', backgroundColor: 'white', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
           <About />
         </div>
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>
