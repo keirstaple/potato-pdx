@@ -56,9 +56,6 @@ class App extends Component {
 
     const newAngle = 100 / (pageTop * 0.05) * 50;
 
-    console.log('pageTop', pageTop)
-    console.log('newTop' , newTop, 'newangle', newAngle)
-
     if(newTop < -2.5) {
       this.refs.aboutSection.style.top = `${newTop}vh`;
     }
