@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { About, VideoColumns } from './../index';
 import { initializeApp } from './../../state';
 import throttle from 'lodash.throttle';
+import logo from '../logo_wordmark.svg';
 
 class App extends Component {
   static propTypes = {
@@ -73,8 +74,10 @@ class App extends Component {
   render() {
     let scrollHeight = window.innerHeight * 7.75;
     return (
-      <div className="App" style={{ height: `${scrollHeight}`, position: 'relative'}}>
-        <div ref="aboutSection" style={{ height: '103.5vh', top: '-98.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white'}}>
+      <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
+        <img src={logo} alt="logo" style={{ position: 'fixed', height: '35px', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />
+
+        <div ref="aboutSection" style={{ height: '103.5vh', top: '-95vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white'}}>
           <About />
         </div>
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>
