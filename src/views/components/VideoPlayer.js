@@ -26,7 +26,7 @@ class VideoPlayer extends Component {
     return(
       <div>
         <VideoColumns />
-        <div style={{position: 'absolute', height: '100vh', width: '97.6vw', marginTop: '-100vh', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '1'}}>
+        <div style={{position: 'absolute', height: '100vh', width: '97.6vw', marginTop: '-100vh', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '4'}}>
           <FontAwesome
             className="times-icon"
             name="window-close-o"

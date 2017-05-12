@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getVideosThunk, videoData } from './../../state';
-// import FontAwesome from 'react-fontawesome';
+import FontAwesome from 'react-fontawesome';
 
 class VideoColumns extends Component {
   constructor() {
@@ -41,12 +41,12 @@ class VideoColumns extends Component {
           key={idx}
           onMouseOver={() => this.hoverEvent('block', idx)}
           onMouseOut={() => this.hoverEvent('none', idx)}
-          style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`}} >
+          style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '90vh', width: `${columnWidth}vw`, position: 'relative', marginTop: '10vh'}} >
           <Link
             className="video-column-link"
             to={`${item.uri}`}
-            style={{display: `${displayVersion}`, fontStyle: 'italic', width: '100px', height: 'auto', margin: '0 auto', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)', textAlign: 'center', textDecoration: 'none'}} >
-            WATCH ME
+            style={{display: `${displayVersion}`, fontStyle: 'italic', width: '100px', height: 'auto', margin: '20vh auto', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)', textAlign: 'center', textDecoration: 'none'}} >
+            <FontAwesome name="play" size="3x" />
           </Link>
         </div>
       )
