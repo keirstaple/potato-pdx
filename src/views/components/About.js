@@ -9,8 +9,12 @@ class About extends Component {
   // }
   render() {
     return (
-      <div>
-        <h1>About Us</h1>
+      <div style={{ position: 'relative'}}>
+        <div style={{ position: 'absolute', margin: '40vh auto', textAlign: 'center', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)'}}>
+          <h1>CONTACT US</h1>
+          <hr />
+          <a href="mailto:blank@blank.com">Email: blank@blank.com</a>
+        </div>
       </div>
     );
   }

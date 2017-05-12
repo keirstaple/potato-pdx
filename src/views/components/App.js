@@ -74,7 +74,7 @@ class App extends Component {
     let scrollHeight = window.innerHeight * 7.75;
     return (
       <div className="App" style={{ height: `${scrollHeight}`, position: 'relative'}}>
-        <div ref="aboutSection" style={{ height: '103.5vh', top: '-95vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white'}}>
+        <div ref="aboutSection" style={{ height: '103.5vh', top: '-98.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white'}}>
           <About />
         </div>
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>
