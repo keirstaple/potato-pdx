@@ -63,9 +63,9 @@ class App extends Component {
       this.refs.aboutSection.style.top = `${newTop}vh`;
     }
 
-    // if(newAngle >= 50) {
-    //   this.refs.aboutSection.style.clipPath = `polygon(0 0, 100% 0, 100% 100%, 0 50%)`;
-    // }
+    if(newAngle <= 50) {
+      this.refs.aboutSection.style.clipPath = `polygon(0 0, 100% 0, 100% 100%, 0 50%)`;
+    }
 
     if(newAngle >= 50) {
       this.refs.aboutSection.style.clipPath = `polygon(0 0, 100% 0, 100% 100%, 0 ${newAngle}%)`;
@@ -77,7 +77,7 @@ class App extends Component {
     let scrollHeight = window.innerHeight * 7.75;
     return (
       <div className="App" style={{ height: `${scrollHeight}`, position: 'relative'}}>
-        <div ref="aboutSection" style={{ height: '101.5vh', top: '-95vh', width: '100vw', position: 'fixed', zIndex: '4', backgroundColor: 'white'}}>
+        <div ref="aboutSection" style={{ height: '103.5vh', top: '-95vh', width: '100vw', position: 'fixed', zIndex: '4', backgroundColor: 'white'}}>
           <About />
         </div>
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>
