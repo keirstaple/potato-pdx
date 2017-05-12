@@ -43,12 +43,20 @@
   font-family: 'Akkurat-Bold';
   font-size: 3.25em;
   margin: 0;
+  color: #1A1919;
 }
 
 .email {
   // @include font-face(Akkurat-Light, fonts/Akkurat-Light);
   font-family: "Akkurat-Light";
-  font-size: 1.25em;
+  font-size: 1.5em;
+  color: #1A1919;
+}
+
+hr {
+  height: 1px;
+  background-color: black;
+  border: none;
 }
 
 body {
