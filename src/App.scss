@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Akkurat-Light";
+  src: font-files('fonts/Akkurat-Light.otf', 'fonts/Akkurat-Light.ttf')
+}
+@font-face {
+  font-family: "Akkurat-Bold";
+  src: font-files('fonts/Akkurat-Bold.otf', 'fonts/Akkurat-Bold.ttf')
+}
+
 .video-column {
   transition: all .5s ease-in-out;
   &:hover {
@@ -28,6 +37,18 @@
     // // -o-animation:rainbow 1s infinite;
     // animation: rainbow 2s infinite;
   }
+}
+
+.contact-us {
+  font-family: 'Akkurat-Bold';
+  font-size: 3.25em;
+  margin: 0;
+}
+
+.email {
+  // @include font-face(Akkurat-Light, fonts/Akkurat-Light);
+  font-family: "Akkurat-Light";
+  font-size: 1.25em;
 }
 
 body {
