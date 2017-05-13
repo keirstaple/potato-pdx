@@ -22,10 +22,10 @@ class App extends Component {
   static defaultProps = {
     width: 'auto',
     height: 'auto',
-    top: -95,
+    top: -43.5,
     left: 'inherit',
     right: 'inherit',
-    speed: -0.03,
+    speed: -0.08,
   }
 
   constructor() {
@@ -57,27 +57,38 @@ class App extends Component {
 
     const newAngle = 100 / (pageTop * 0.05) * 50;
 
+    const inverseAngle = 45 + (200 - newAngle);
+
+    console.log('pageTop', pageTop)
+    console.log('newTop', newTop)
+    console.log('newAngle', newAngle)
+    console.log('inverseAngle', inverseAngle)
+
+    console.log('pageYOffset', pageTop)
+    console.log('windowHeight', window.innerHeight)
+
+    const aboutSectionStyle = this.refs.aboutSection.style
     if(newTop < -2.5) {
-      this.refs.aboutSection.style.top = `${newTop}vh`;
+      aboutSectionStyle.top = `${newTop}vh`;
+      aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
     }
 
-    if(newAngle <= 50) {
-      this.refs.aboutSection.style.clipPath = `polygon(0 0, 100% 0, 100% 100%, 0 50%)`;
-    }
+    // if(newAngle > 50) {
+    // }
 
-    if(newAngle >= 50) {
-      this.refs.aboutSection.style.clipPath = `polygon(0 0, 100% 0, 100% 100%, 0 ${newAngle}%)`;
+    if(newTop > -2.50) {
+      aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${inverseAngle}%, 0 50%)`;
     }
 
   }
 
   render() {
-    let scrollHeight = window.innerHeight * 7.75;
+    let scrollHeight = window.innerHeight * 2.51;
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '35px', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />
 
-        <div ref="aboutSection" style={{ height: '103.5vh', top: '-95vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white'}}>
+        <div ref="aboutSection" style={{ height: '103.5vh', top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
           <About />
         </div>
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>
