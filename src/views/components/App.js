@@ -75,7 +75,7 @@ class App extends Component {
       aboutSectionStyle.top = `${newTop}vh`;
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
 
-      iconStyle.top = `${newTop+46}vh`;
+      iconStyle.top = `${newTop+47}vh`;
     }
 
     // if(newAngle > 50) {
@@ -97,8 +97,8 @@ class App extends Component {
           <About />
         </div>
 
-        <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '2.5vh', zIndex: '6', margin: '0', padding: '0' }}>
-          <FontAwesome name="play" size="4x" style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
+        <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '6', margin: '0', padding: '0' }}>
+          <FontAwesome name="play" size="3x" style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
         </div>
 
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>
