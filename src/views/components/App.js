@@ -31,6 +31,9 @@ class App extends Component {
 
   constructor() {
     super();
+    this.state = {
+      display: 'none',
+    }
     this.handleScroll = throttle(this.handleScroll.bind(this), 5);
   }
 
@@ -71,10 +74,15 @@ class App extends Component {
     const aboutSectionStyle = this.refs.aboutSection.style;
     const iconStyle = this.refs.arrowIcon.style;
 
+    if(pageTop >= 130) {
+      this.setState({ display: 'block' })
+    } else if(pageTop < 130 ) {
+      this.setState({ display: 'none' })
+    }
+
     if(newTop < -2.5) {
       aboutSectionStyle.top = `${newTop}vh`;
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
-
       iconStyle.top = `${newTop+47}vh`;
     }
 
@@ -94,7 +102,7 @@ class App extends Component {
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '35px', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />
 
         <div ref="aboutSection" style={{ height: '103.5vh', top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
-          <About />
+          <About display={this.state.display} />
         </div>
 
         <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '6', margin: '0', padding: '0' }}>
