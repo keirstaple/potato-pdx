@@ -41,7 +41,7 @@ class VideoColumns extends Component {
           key={idx}
           onMouseOver={() => this.hoverEvent('block', idx)}
           onMouseOut={() => this.hoverEvent('none', idx)}
-          style={{backgroundImage: `url(${thumbnail})`, backgroundPosition: 'center', height: '100vh', width: `${columnWidth}vw`, position: 'relative'}} >
+          style={{background: `url(${thumbnail})`, backgroundSize: 'cover', backgroundPosition: 'center center', height: '100vh', width: `${columnWidth}vw`, position: 'relative'}} >
           <Link
             className="video-column-link"
             to={`${item.uri}`}
