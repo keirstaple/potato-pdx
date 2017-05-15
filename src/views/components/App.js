@@ -4,6 +4,7 @@ import { About, VideoColumns } from './../index';
 import { initializeApp } from './../../state';
 import throttle from 'lodash.throttle';
 import logo from '../logo_wordmark.svg';
+import FontAwesome from 'react-fontawesome';
 
 class App extends Component {
   static propTypes = {
@@ -67,10 +68,14 @@ class App extends Component {
     console.log('pageYOffset', pageTop)
     console.log('windowHeight', window.innerHeight)
 
-    const aboutSectionStyle = this.refs.aboutSection.style
+    const aboutSectionStyle = this.refs.aboutSection.style;
+    const iconStyle = this.refs.arrowIcon.style;
+
     if(newTop < -2.5) {
       aboutSectionStyle.top = `${newTop}vh`;
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+
+      iconStyle.top = `${newTop+46}vh`;
     }
 
     // if(newAngle > 50) {
@@ -91,6 +96,11 @@ class App extends Component {
         <div ref="aboutSection" style={{ height: '103.5vh', top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
           <About />
         </div>
+
+        <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '2.5vh', zIndex: '6', margin: '0', padding: '0' }}>
+          <FontAwesome name="play" size="4x" style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
+        </div>
+
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>
           <VideoColumns />
         </div>

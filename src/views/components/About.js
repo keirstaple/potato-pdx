@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
-import FontAwesome from 'react-fontawesome';
 
 class About extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     position: this.props.position,
-  //   }
-  // }
   render() {
     return (
       <div style={{ position: 'relative'}}>
@@ -16,7 +9,7 @@ class About extends Component {
           <hr />
           <a className="email" href="mailto:Info@potatoportland.com" style={{ textDecoration: 'none', color: 'black' }}>Email: Info@potatoportland.com</a>
         </div>
-        <FontAwesome name="play" size="4x" style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'black', position: 'absolute', left: '50%', top: '50vh', zIndex: '6' }} />
+
       </div>
     );
   }
