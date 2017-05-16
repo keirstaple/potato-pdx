@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getVideosThunk, videoData } from './../../state';
+import { WindowResizeListener } from 'react-window-resize-listener';
 import FontAwesome from 'react-fontawesome';
 
 class VideoColumns extends Component {
@@ -19,6 +20,11 @@ class VideoColumns extends Component {
     this.setState({ [idx]: value })
   }
 
+  windowResize(windowSize) {
+    console.log(windowSize)
+    this.setState({ windowSize })
+  }
+
   renderList() {
     let featuredVideos = [];
     if (this.props.videos) {
@@ -32,8 +38,15 @@ class VideoColumns extends Component {
 
     return featuredVideos.map((item, idx) => {
       const thumbnail = item.pictures.sizes[5].link;
-      const columnWidth = 100 / featuredVideos.length
       const displayVersion = this.state[idx] || 'none';
+
+      let columnWidth;
+      if(this.state.windowSize.windowWidth < 750) {
+        columnWidth = 100;
+      } else if( this.state.windowSize.windowWidth >= 750 ) {
+        columnWidth = 100 / featuredVideos.length;
+      }
+
       return(
         <div
           className="video-column"
@@ -57,6 +70,7 @@ class VideoColumns extends Component {
 
     return (
       <div className="video-column-container" style={{display: 'flex', position: 'fixed', height: '100vh', width: '100vw', margin: '0'}}>
+        <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         { this.renderList() }
       </div>
     );
