@@ -8,7 +8,9 @@ import FontAwesome from 'react-fontawesome';
 class VideoColumns extends Component {
   constructor() {
     super()
-    this.state = { }
+    this.state = {
+      windowSize: { },
+    }
   }
 
   componentWillMount() {
@@ -21,7 +23,6 @@ class VideoColumns extends Component {
   }
 
   windowResize(windowSize) {
-    console.log(windowSize)
     this.setState({ windowSize })
   }
 
@@ -41,9 +42,9 @@ class VideoColumns extends Component {
       const displayVersion = this.state[idx] || 'none';
 
       let columnWidth;
-      if(this.state.windowSize.windowWidth < 750) {
+      if( this.state.windowSize.windowWidth < 750 ) {
         columnWidth = 100;
-      } else if( this.state.windowSize.windowWidth >= 750 ) {
+      } else {
         columnWidth = 100 / featuredVideos.length;
       }
 
