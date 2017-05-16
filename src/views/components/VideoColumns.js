@@ -54,8 +54,9 @@ class VideoColumns extends Component {
   }
 
   render() {
+
     return (
-      <div style={{display: 'flex', position: 'fixed', height: '100vh', width: '100vw', margin: '0'}}>
+      <div className="video-column-container" style={{display: 'flex', position: 'fixed', height: '100vh', width: '100vw', margin: '0'}}>
         { this.renderList() }
       </div>
     );

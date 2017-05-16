@@ -76,7 +76,7 @@ class App extends Component {
   }
 
   render() {
-    let scrollHeight = window.innerHeight * 2.51;
+    let scrollHeight = window.innerHeight * 2.53;
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '25px', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />

@@ -7,16 +7,31 @@
   src: font-files('fonts/Akkurat-Bold.otf', 'fonts/Akkurat-Bold.ttf')
 }
 
+$break-small: 320px;
+$break-iPhone-plus: 400px;
+$break-medium: 750px;
+$break-large: 1200px;
+
+.video-column-container {
+  flex-direction: column;
+  @media screen and (min-width: $break-medium) {
+    flex-direction: row;
+  }
+}
+
 .video-column {
   transition: all .5s ease-in-out;
   &:hover {
-    z-index: 8;
+    z-index: 7;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
   }
   &:nth-child(2) {
-    margin: 0 5px;
+    margin: 2px 0;
+    @media screen and (min-width: $break-medium) {
+      margin: 0 5px;
+    }
   }
 }
 
