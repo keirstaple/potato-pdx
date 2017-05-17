@@ -42,10 +42,13 @@ class VideoColumns extends Component {
       const displayVersion = this.state[idx] || 'none';
 
       let columnWidth;
+      let columnHeight;
       if( this.state.windowSize.windowWidth < 750 ) {
         columnWidth = 100;
+        columnHeight = 100 / featuredVideos.length;
       } else {
         columnWidth = 100 / featuredVideos.length;
+        columnHeight = 100;
       }
 
       return(
@@ -55,7 +58,7 @@ class VideoColumns extends Component {
           key={idx}
           onMouseOver={() => this.hoverEvent('block', idx)}
           onMouseOut={() => this.hoverEvent('none', idx)}
-          style={{background: `url(${thumbnail})`, backgroundSize: 'cover', backgroundPosition: 'center center', height: '100vh', width: `${columnWidth}vw`, position: 'relative'}} >
+          style={{background: `url(${thumbnail})`, backgroundSize: 'cover', backgroundPosition: 'center center', height: `${columnHeight}vh`, width: `${columnWidth}vw`, position: 'relative'}} >
           <Link
             className="video-column-link"
             to={`${item.uri}`}
