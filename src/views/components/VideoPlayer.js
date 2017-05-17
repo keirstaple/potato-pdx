@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
+import { WindowResizeListener } from 'react-window-resize-listener';
 import FontAwesome from 'react-fontawesome';
 
 import { VideoColumns } from '../index';
@@ -12,9 +13,17 @@ class VideoPlayer extends Component {
     router: PropTypes.object
   };
 
+  constructor() {
+    super()
+    this.state = {
+      windowSize: { },
+    }
+  }
+
   renderVideo() {
+    const windowSize = this.state.windowSize
     return(
-      <ReactPlayer url={`https://vimeo.com/${this.props.videoId}`} height='500px' width='800px' style={{position: 'absolute', left: '50%', top: '50%', marginLeft: '-30vw', marginTop: '-35vh'}} />
+      <ReactPlayer url={`https://vimeo.com/${this.props.videoId}`} height={`${windowSize.windowWidth * (3/8)}`} width={`${windowSize.windowWidth * 0.75}px`} style={{position: 'absolute', margin: 'auto', top: '0', right: '0', bottom: '0', left: '0', maxHeight: `${windowSize.winowHeight * 0.95}` }} />
     )
   }
 
@@ -22,11 +31,15 @@ class VideoPlayer extends Component {
     return this.context.router.push('/');
   }
 
+  windowResize(windowSize) {
+    this.setState({ windowSize })
+  }
+
   render() {
     return(
       <div>
         <VideoColumns />
-        <div style={{position: 'absolute', height: '100vh', width: '100vw', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '4'}}>
+        <div style={{position: 'relative', height: '100vh', width: '100vw', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '4'}}>
           <FontAwesome
             className="times-icon"
             name="window-close-o"
@@ -34,6 +47,7 @@ class VideoPlayer extends Component {
             style={{color: 'white', position: 'absolute', left: '50%', top: '50%', marginLeft: '40vw', marginTop: '-40vh', zIndex: '2', cursor: 'pointer'}}
             onClick={this.handleClick.bind(this)}
           />
+          <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
           { this.renderVideo() }
         </div>
 
