@@ -67,11 +67,13 @@ class App extends Component {
     if(newTop < -2.5) {
       aboutSectionStyle.top = `${newTop}vh`;
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+      aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
       iconStyle.top = `${newTop+49}vh`;
     }
 
     if(newTop > -2.50) {
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${inverseAngle}%, 0 50%)`;
+      aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${inverseAngle}%, 0 50%)`;
     }
   }
 
@@ -81,7 +83,7 @@ class App extends Component {
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '25px', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />
 
-        <div ref="aboutSection" style={{ height: '103.5vh', top: '-45.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
+        <div ref="aboutSection" style={{ height: '103.5vh', top: '-45.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', WebkitClipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
           <About display={this.state.display} />
         </div>
 
