@@ -39,7 +39,17 @@ class VideoColumns extends Component {
 
     return featuredVideos.map((item, idx) => {
       const thumbnail = item.pictures.sizes[5].link;
-      const displayVersion = this.state[idx] || 'none';
+      console.log('windowSize', this.state.windowSize)
+
+      let displayVersion;
+      let iconSize;
+      if(this.state.windowSize.widowWidth < 750) {
+        displayVersion = 'block';
+        iconSize = '2x';
+      } else if(this.state.windowSize.widowWidth >= 750){
+        displayVersion = this.state[idx] || 'none';
+        iconSize = '3x';
+      }
 
       let columnWidth;
       let columnHeight;
@@ -63,7 +73,7 @@ class VideoColumns extends Component {
             className="video-column-link"
             to={`${item.uri}`}
             style={{display: `${displayVersion}`, position: 'absolute', fontStyle: 'italic', width: '100px', height: 'auto', margin: '0 auto', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)', textAlign: 'center', textDecoration: 'none'}} >
-            <FontAwesome name="play" size="3x" />
+            <FontAwesome name="play" size={`${iconSize}`} />
           </Link>
         </div>
       )
