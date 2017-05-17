@@ -41,16 +41,6 @@ class VideoColumns extends Component {
       const thumbnail = item.pictures.sizes[5].link;
       console.log('windowSize', this.state.windowSize)
 
-      let displayVersion;
-      let iconSize;
-      if(this.state.windowSize.widowWidth < 750) {
-        displayVersion = 'block';
-        iconSize = '2x';
-      } else if(this.state.windowSize.widowWidth >= 750){
-        displayVersion = this.state[idx] || 'none';
-        iconSize = '3x';
-      }
-
       let columnWidth;
       let columnHeight;
       if( this.state.windowSize.windowWidth < 750 ) {
@@ -59,6 +49,22 @@ class VideoColumns extends Component {
       } else {
         columnWidth = 100 / featuredVideos.length;
         columnHeight = 100;
+      }
+
+      let displayVersion;
+      let iconSize;
+
+      // console.log(typeof(this.state.windowSize.windowWidth));
+      // console.log(this.state.windowSize.windowWidth)
+      console.log(this.state.windowSize.windowWidth < 750);
+      if(this.state.windowSize.windowWidth < 750) {
+        displayVersion = 'block';
+        iconSize = '2x';
+        console.log('iconSize', iconSize)
+      } else if(this.state.windowSize.windowWidth >= 750) {
+        displayVersion = this.state[idx] || 'none';
+        iconSize = '3x';
+        console.log('iconsize', iconSize)
       }
 
       return(
