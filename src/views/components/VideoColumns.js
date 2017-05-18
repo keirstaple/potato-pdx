@@ -39,7 +39,7 @@ class VideoColumns extends Component {
 
     return featuredVideos.map((item, idx) => {
       const thumbnail = item.pictures.sizes[5].link;
-      console.log('windowSize', this.state.windowSize)
+      // console.log('windowSize', this.state.windowSize)
 
       let columnWidth;
       let columnHeight;
@@ -60,11 +60,11 @@ class VideoColumns extends Component {
       if(this.state.windowSize.windowWidth < 750) {
         displayVersion = 'block';
         iconSize = '2x';
-        console.log('iconSize', iconSize)
+        // console.log('iconSize', iconSize)
       } else if(this.state.windowSize.windowWidth >= 750) {
         displayVersion = this.state[idx] || 'none';
         iconSize = '3x';
-        console.log('iconsize', iconSize)
+        // console.log('iconsize', iconSize)
       }
 
       return(

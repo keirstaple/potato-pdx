@@ -53,10 +53,25 @@ class App extends Component {
     //multiply by .65 to convert pixels to vh
     const pageTop = window.pageYOffset * 0.65;
     const newTop = (top - (pageTop * speed));
-    const newAngle = 100 / (pageTop * 0.05) * 50;
-    const inverseAngle = 45 + (200 - newAngle);
+
+    // const newAngle = 100 / (pageTop * 0.05) * 50;
+    const newAngle = 100 + (newTop - 4.5);
+
+    const secondAngle = newAngle / 2;
+    // const inverseAngle = 45 + (200 - newAngle);
+
     const aboutSectionStyle = this.refs.aboutSection.style;
     const iconStyle = this.refs.arrowIcon.style;
+
+    console.log('pageTop', pageTop);
+    console.log('////////////////////')
+    console.log('newTop', newTop);
+    console.log('////////////////////')
+    console.log('newAngle', newAngle);
+    console.log('////////////////////')
+    // console.log('newTop', newTop);
+    // console.log('newAngle', newAngle);
+    // console.log('inverseAngle', inverseAngle);
 
     if(pageTop >= 130) {
       this.setState({ display: 'block' })
@@ -66,14 +81,17 @@ class App extends Component {
 
     if(newTop < -2.5) {
       aboutSectionStyle.top = `${newTop}vh`;
+    }
+
+    if(newTop < -45.3) {
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
       aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
       iconStyle.top = `${newTop+49}vh`;
     }
 
-    if(newTop > -2.50) {
-      aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${inverseAngle}%, 0 50%)`;
-      aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${inverseAngle}%, 0 50%)`;
+    if(newTop > -45.3 && newAngle <= 100) {
+      aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
+      aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
     }
   }
 
