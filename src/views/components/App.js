@@ -81,12 +81,12 @@ class App extends Component {
 
     if(newTop < -2.5) {
       aboutSectionStyle.top = `${newTop}vh`;
+      iconStyle.top = `${newTop+49}vh`;
     }
 
     if(newTop < -45.3) {
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
       aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
-      iconStyle.top = `${newTop+49}vh`;
     }
 
     if(newTop > -45.3 && newAngle <= 100) {
