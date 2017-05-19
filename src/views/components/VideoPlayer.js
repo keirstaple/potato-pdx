@@ -39,14 +39,7 @@ class VideoPlayer extends Component {
     return(
       <div>
         <VideoColumns />
-        <div style={{position: 'relative', height: '100vh', width: '100vw', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '4'}}>
-          <FontAwesome
-            className="times-icon"
-            name="window-close-o"
-            size="2x"
-            style={{color: 'white', position: 'absolute', left: '50%', top: '50%', marginLeft: '40vw', marginTop: '-40vh', zIndex: '2', cursor: 'pointer'}}
-            onClick={this.handleClick.bind(this)}
-          />
+        <div onClick={this.handleClick.bind(this)} style={{position: 'relative', height: '100vh', width: '100vw', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '4'}}>
           <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
           { this.renderVideo() }
         </div>
@@ -61,3 +54,11 @@ export default connect(
     videoId: videoId(state)
   })
 )(VideoPlayer);
+
+// <FontAwesome
+//   className="times-icon"
+//   name="window-close-o"
+//   size="2x"
+//   style={{color: 'white', position: 'absolute', left: '50%', top: '50%', marginLeft: '40vw', marginTop: '-40vh', zIndex: '2', cursor: 'pointer'}}
+//   onClick={this.handleClick.bind(this)}
+// />
