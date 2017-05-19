@@ -89,14 +89,14 @@ class App extends Component {
       aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
     }
 
-    if(newTop > -45.3 && newAngle <= 100) {
+    if(newTop > -45.3 && newAngle <= 90) {
       aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
       aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
     }
   }
 
   render() {
-    let scrollHeight = window.innerHeight * 2.53;
+    let scrollHeight = window.innerHeight * 2.15;
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '25px', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />
