@@ -68,6 +68,15 @@ $break-large: 1200px;
   color: #1A1919;
 }
 
+.social-icons {
+  &:hover {
+    fill: #E89CBA;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
 hr {
   height: 1px;
   background-color: black;
