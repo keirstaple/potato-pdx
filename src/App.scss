@@ -69,11 +69,12 @@ $break-large: 1200px;
 }
 
 .social-icons {
+  transition: all .5s ease-in-out;
   &:hover {
     fill: #E89CBA;
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    transform: scale(1.25);
   }
 }
 
