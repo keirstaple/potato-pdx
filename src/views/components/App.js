@@ -57,7 +57,7 @@ class App extends Component {
     // const newAngle = 100 / (pageTop * 0.05) * 50;
     const newAngle = 100 + (newTop - 4.5);
 
-    const secondAngle = newAngle / 2;
+    // const secondAngle = newAngle / 2;
     // const inverseAngle = 45 + (200 - newAngle);
 
     const aboutSectionStyle = this.refs.aboutSection.style;
@@ -73,6 +73,12 @@ class App extends Component {
     // console.log('newAngle', newAngle);
     // console.log('inverseAngle', inverseAngle);
 
+    if(pageTop > 40.5) {
+      iconStyle.display = 'none';
+    } else if(pageTop <= 40.5) {
+      iconStyle.display = 'block';
+    }
+
     if(pageTop >= 130) {
       this.setState({ display: 'block' })
     } else if(pageTop < 130 ) {
@@ -81,7 +87,7 @@ class App extends Component {
 
     if(newTop < -2.5) {
       aboutSectionStyle.top = `${newTop}vh`;
-      iconStyle.top = `${newTop+49}vh`;
+      iconStyle.top = `${newTop + 49}vh`;
     }
 
     if(newTop < -45.3) {
