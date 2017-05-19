@@ -99,7 +99,7 @@ class App extends Component {
     let scrollHeight = window.innerHeight * 2.15;
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
-        <img src={logo} alt="logo" style={{ position: 'fixed', height: '25px', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />
+        <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '10px', left: '10px', width: 'auto', zIndex: '5' }} />
 
         <div ref="aboutSection" style={{ height: '103.5vh', top: '-45.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', WebkitClipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
           <About display={this.state.display} />
