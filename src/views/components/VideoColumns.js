@@ -31,18 +31,22 @@ class VideoColumns extends Component {
     if (this.props.videos) {
       featuredVideos = this.props.videos.map(item => {
         if(item.tags.filter(tag => tag.name.includes('feature')).length > 0) {
+          console.log('item tag', item)
           return item
         }
         return null;
       }).filter(item => item !== null)
     }
 
-    return featuredVideos.map((item, idx) => {
+    return featuredVideos.sort((a, b) => parseFloat(a.tags[featuredVideos.length-1].tag) - parseFloat(b.tags[featuredVideos.length-1].tag)).reverse().map((item, idx) => {
+      console.log('item', item)
       const thumbnail = item.pictures.sizes[5].link;
-      // console.log('windowSize', this.state.windowSize)
-
+      // const thumbnail = item.link;
       let columnWidth;
       let columnHeight;
+      let displayVersion;
+      let iconSize;
+
       if( this.state.windowSize.windowWidth < 750 ) {
         columnWidth = 100;
         columnHeight = 100 / featuredVideos.length;
@@ -51,12 +55,6 @@ class VideoColumns extends Component {
         columnHeight = 100;
       }
 
-      let displayVersion;
-      let iconSize;
-
-      // console.log(typeof(this.state.windowSize.windowWidth));
-      // console.log(this.state.windowSize.windowWidth)
-      console.log(this.state.windowSize.windowWidth < 750);
       if(this.state.windowSize.windowWidth < 750) {
         displayVersion = 'block';
         iconSize = '2x';
