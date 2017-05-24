@@ -40,12 +40,19 @@ class VideoColumns extends Component {
 
     return featuredVideos.sort((a, b) => parseFloat(a.tags[featuredVideos.length-1].tag) - parseFloat(b.tags[featuredVideos.length-1].tag)).reverse().map((item, idx) => {
       console.log('item', item)
-      const thumbnail = item.pictures.sizes[5].link;
-      // const thumbnail = item.link;
+      // const thumbnail = item.pictures.sizes[5].link;
+      let thumbnail;
       let columnWidth;
       let columnHeight;
       let displayVersion;
       let iconSize;
+
+      if(item.name === "Willamette Valley Vineyards Pork Ribs") {
+        // thumbnail = "https://c1.staticflickr.com/5/4157/34021668473_7a722f296f_h.jpg";
+        thumbnail = "https://c1.staticflickr.com/5/4157/34021668473_295306fc70_o.jpg";
+      } else {
+        thumbnail = item.pictures.sizes[5].link;
+      }
 
       if( this.state.windowSize.windowWidth < 750 ) {
         columnWidth = 100;
