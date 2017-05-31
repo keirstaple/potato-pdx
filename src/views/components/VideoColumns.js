@@ -47,11 +47,13 @@ class VideoColumns extends Component {
       let displayVersion;
       let iconSize;
 
+      // thumbnail = item.pictures.sizes[5].link;
       if(item.name === "Willamette Valley Vineyards Pork Ribs") {
-        // thumbnail = "https://c1.staticflickr.com/5/4157/34021668473_7a722f296f_h.jpg";
         thumbnail = "https://c1.staticflickr.com/5/4157/34021668473_295306fc70_o.jpg";
-      } else {
-        thumbnail = item.pictures.sizes[5].link;
+      } else if(item.name === "Pearl Tavern") {
+        thumbnail = "https://c1.staticflickr.com/5/4274/34851654802_d90d0dc4f7_o.jpg";
+      } else if(item.name === "COLTY Fashion Show Intro") {
+        thumbnail = "https://c1.staticflickr.com/5/4219/34851655732_ecd49b087f_o.jpg"
       }
 
       if( this.state.windowSize.windowWidth < 750 ) {

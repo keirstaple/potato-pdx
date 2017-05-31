@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
 import { WindowResizeListener } from 'react-window-resize-listener';
-import FontAwesome from 'react-fontawesome';
 
 import { VideoColumns } from '../index';
 
@@ -54,11 +53,3 @@ export default connect(
     videoId: videoId(state)
   })
 )(VideoPlayer);
-
-// <FontAwesome
-//   className="times-icon"
-//   name="window-close-o"
-//   size="2x"
-//   style={{color: 'white', position: 'absolute', left: '50%', top: '50%', marginLeft: '40vw', marginTop: '-40vh', zIndex: '2', cursor: 'pointer'}}
-//   onClick={this.handleClick.bind(this)}
-// />
