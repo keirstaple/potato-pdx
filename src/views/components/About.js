@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
-import facebook from '../images/facebook.svg'
-import instagram from '../images/instagram.svg'
-import vimeo from '../images/vimeo.svg'
-import mail from '../images/mail.svg'
+import facebook from '../images/facebook.svg';
+import instagram from '../images/instagram.svg';
+import vimeo from '../images/vimeo.svg';
+import mail from '../images/mail.svg';
+import akkuratBold from '../fonts/Akkurat-Bold.ttf';
+import akkuratLight from '../fonts/Akkurat-Light.ttf';
+
 
 class About extends Component {
   render() {
     return (
       <div style={{ position: 'relative'}}>
         <div style={{ display: `${this.props.display}`, position: 'absolute', margin: '40vh auto', textAlign: 'center', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)'}}>
-          <h1 className="contact-us" style={{ color: '#E89CBA', textShadow: '-7.5px 7.5px #1A1919'}}>CONTACT US</h1>
+          <h1 className="contact-us" style={{ fontFamily: `${akkuratBold}`, color: '#E89CBA', textShadow: '-7.5px 7.5px #1A1919'}}>CONTACT US</h1>
           <hr />
-          <a className="email" href="mailto:Info@potatoportland.com" style={{ textDecoration: 'none', color: 'black', cursor: 'pointer' }}>Email: Info@potatoportland.com</a>
+          <a className="email" href="mailto:Info@potatoportland.com" style={{ fontFamily: `${akkuratLight}`, textDecoration: 'none', color: 'black', cursor: 'pointer' }}>Email: Info@potatoportland.com</a>
           <div style={{ display: 'flex', marginTop: '15px', justifyContent: 'center', alignItems: 'center' }}>
             <a href="mailto:Info@potatoportland.com" target="_blank"><img className="social-icons" style={{ cursor: 'pointer', height: "5vh", width: "auto", margin: '10px'}} src={mail} alt="email" /></a>
             <a href="https://vimeo.com/user58377879" target="_blank"><img className="social-icons" style={{ cursor: 'pointer', height: "5vh", width: "auto", margin: '10px'}} src={vimeo} alt="vimeo" /></a>
