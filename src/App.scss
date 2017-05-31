@@ -1,11 +1,13 @@
-// @font-face {
-//   font-family: "Akkurat-Light";
-//   src: font-files('fonts/Akkurat-Light.otf', 'fonts/Akkurat-Light.ttf');
-// }
-// @font-face {
-//   font-family: "Akkurat-Bold";
-//   src: font-files('fonts/Akkurat-Bold.otf', 'fonts/Akkurat-Bold.ttf');
-// }
+@font-face {
+  font-family: "Akkurat-Light";
+  // src: font-files('fonts/Akkurat-Light.otf', 'fonts/Akkurat-Light.ttf');
+  src: url('views/fonts/Akkurat-Light.otf');
+}
+@font-face {
+  font-family: "Akkurat-Bold";
+  // src: font-files('fonts/Akkurat-Bold.otf', 'fonts/Akkurat-Bold.ttf');
+  src: url('views/fonts/Akkurat-Bold.otf');
+}
 
 $break-small: 320px;
 $break-iPhone-plus: 400px;
@@ -55,16 +57,20 @@ $break-large: 1200px;
 }
 
 .contact-us {
-  // font-family: 'Akkurat-Bold';
+  font-family: 'Akkurat-Bold';
   font-size: 3.25em;
   margin: 0;
-  color: #1A1919;
+  // color: #1A1919;
+  color: #E89CBA;
+  text-shadow: -7.5px 7.5px #1A1919;
 }
 
 .email {
-  // font-family: "Akkurat-Light";
+  font-family: "Akkurat-Light";
   font-size: 1.5em;
   color: #1A1919;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .social-icons {
