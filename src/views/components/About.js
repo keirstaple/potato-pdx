@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import facebook from '../images/facebook.svg';
-import instagram from '../images/instagram.svg';
-import vimeo from '../images/vimeo.svg';
-import mail from '../images/mail.svg';
+import facebook from '../../../public/images/facebook.svg';
+import instagram from '../../../public/images/instagram.svg';
+import vimeo from '../../../public/images/vimeo.svg';
+import mail from '../../../public/images/mail.svg';
 // import akkuratBold from '../fonts/Akkurat-Bold.ttf';
 // import akkuratLight from '../fonts/Akkurat-Light.ttf';
 
