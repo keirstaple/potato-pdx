@@ -131,7 +131,7 @@ module.exports = {
       //scss
       {
         test: /\.scss$/,
-        include: paths.appSrc,
+        // include: paths.appSrc,
         loaders: ["style", "css", "sass"]
       },
       // "postcss" loader applies autoprefixer to our CSS.
@@ -164,7 +164,7 @@ module.exports = {
         {
           test: /\.(eot|otf|ttf|woff|woff2)(\?.*)?$/,
  // -        include: paths.appSrc,
-          exclude: /\/favicon.ico$/,
+          // exclude: /\/favicon.ico$/,
           loader: 'file',
           query: {
            name: 'static/media/[name].[hash:8].[ext]'
@@ -173,7 +173,7 @@ module.exports = {
        // A special case for favicon.ico to place it into build root directory.
        {
          test: /\/favicon.ico$/,
-         include: [paths.appSrc],
+        //  include: [paths.appSrc],
          loader: 'file',
          query: {
            name: 'favicon.ico?[hash:8]'
