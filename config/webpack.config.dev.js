@@ -156,7 +156,29 @@ module.exports = {
         query: {
           name: 'static/media/[name].[hash:8].[ext]'
         }
-      }
+      },
+
+      // "file" loader makes sure those assets get served by WebpackDevServer.
+        // When you `import` an asset, you get its (virtual) filename.
+        // In production, they would get copied to the `build` folder.
+        {
+          test: /\.(eot|otf|ttf|woff|woff2)(\?.*)?$/,
+ // -        include: paths.appSrc,
+          exclude: /\/favicon.ico$/,
+          loader: 'file',
+          query: {
+           name: 'static/media/[name].[hash:8].[ext]'
+         }
+       },
+       // A special case for favicon.ico to place it into build root directory.
+       {
+         test: /\/favicon.ico$/,
+         include: [paths.appSrc],
+         loader: 'file',
+         query: {
+           name: 'favicon.ico?[hash:8]'
+         }
+       },
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
     ]
