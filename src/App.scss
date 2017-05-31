@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Akkurat-Light";
   // src: font-files('fonts/Akkurat-Light.otf', 'fonts/Akkurat-Light.ttf');
-  src: url('views/fonts/Akkurat-Light.otf');
+  src: url('../public/fonts/Akkurat-Light.otf');
 }
 @font-face {
   font-family: "Akkurat-Bold";
   // src: font-files('fonts/Akkurat-Bold.otf', 'fonts/Akkurat-Bold.ttf');
-  src: url('views/fonts/Akkurat-Bold.otf');
+  src: url('../public/fonts/Akkurat-Bold.otf');
 }
 
 $break-small: 320px;
