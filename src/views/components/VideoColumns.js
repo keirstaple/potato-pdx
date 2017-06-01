@@ -38,7 +38,7 @@ class VideoColumns extends Component {
       }).filter(item => item !== null)
     }
 
-    return featuredVideos.sort((a, b) => parseFloat(a.tags[featuredVideos.length-1].tag) - parseFloat(b.tags[featuredVideos.length-1].tag)).reverse().map((item, idx) => {
+    return featuredVideos.sort((a, b) => parseFloat(a.tags[a.tags.length-1].tag) - parseFloat(b.tags[b.tags.length-1].tag)).map((item, idx) => {
       console.log('item', item)
       // const thumbnail = item.pictures.sizes[5].link;
       let thumbnail;
