@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { About, VideoColumns } from './../index';
 import { initializeApp } from './../../state';
+import { WindowResizeListener } from 'react-window-resize-listener';
 import throttle from 'lodash.throttle';
 import logo from '../../../public/images/logo_wordmark.svg';
 import FontAwesome from 'react-fontawesome';
@@ -33,6 +34,8 @@ class App extends Component {
     super();
     this.state = {
       display: 'none',
+      windowSize: { },
+      arrowSize: '2x',
     }
     this.handleScroll = throttle(this.handleScroll.bind(this), 5);
   }
@@ -44,6 +47,16 @@ class App extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  windowResize(windowSize) {
+    this.setState({ windowSize });
+
+    if(windowSize.windowWidth < 1440) {
+      this.setState({ arrowSize: '2x' });
+    } else if (windowSize.windowWidth >= 1440 ) {
+      this.setState({ arrowSize: '3x' });
+    }
   }
 
   handleScroll(event) {
@@ -105,6 +118,7 @@ class App extends Component {
     let scrollHeight = window.innerHeight * 2.15;
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
+        <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
 
         <div ref="aboutSection" style={{ height: '103.5vh', top: '-45.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', WebkitClipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
@@ -112,7 +126,7 @@ class App extends Component {
         </div>
 
         <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '6', margin: '0', padding: '0' }}>
-          <FontAwesome name="play" size="2x" style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
+          <FontAwesome name="play" size={this.state.arrowSize} style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
         </div>
 
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>

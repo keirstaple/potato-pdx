@@ -71,7 +71,6 @@ class VideoColumns extends Component {
       } else if(this.state.windowSize.windowWidth >= 750) {
         displayVersion = this.state[idx] || 'none';
         iconSize = '3x';
-        // console.log('iconsize', iconSize)
       }
 
       return(
