@@ -103,7 +103,7 @@ class App extends Component {
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
-        <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
+        <object data={logo} style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
 
         <div ref="aboutSection" style={{ height: '103.5vh', top: '-45.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', WebkitClipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
           <About display={this.state.display} />
