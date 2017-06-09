@@ -1,5 +1,6 @@
 {
   "name": "potato-pdx",
+  "homepage": "https://www.potatoportland.com/",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
