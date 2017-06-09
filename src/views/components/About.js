@@ -30,14 +30,15 @@ class About extends Component {
       <div style={{ position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <div style={{ display: `${this.props.display}`, position: 'absolute', margin: `${this.state.margin}`, textAlign: 'center', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)'}}>
-          <h1 className="contact-us" style={{fontSize: `${3.25*multiplier}em`}}>CONTACT US</h1>
+          <h1 className="contact-us" style={{ fontSize: `${3*multiplier}em`}}>CONTACT US</h1>
           <hr />
-          <a className="email" href="mailto:Info@potatoportland.com" style={{fontSize: `${1.5*multiplier}em`}}>Email: Info@potatoportland.com</a>
-          <div style={{ display: 'flex', marginTop: '15px', justifyContent: 'center', alignItems: 'center' }}>
-            <a href="mailto:Info@potatoportland.com" target="_blank"><img className="social-icons" style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '10px'}} src={mail} alt="email" /></a>
-            <a href="https://vimeo.com/user58377879" target="_blank"><img className="social-icons" style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '10px'}} src={vimeo} alt="vimeo" /></a>
-            <a href="https://www.facebook.com/potatopotatopdx/" target="_blank"><img className="social-icons" style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '10px'}} src={facebook} alt="facebook" /></a>
-            <a href="https://www.instagram.com/potatopotatopdx/" target="_blank"><img className="social-icons" style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '10px'}} src={instagram} alt="instagram" /></a>
+          <p className="email" style={{fontSize: `${1.25*multiplier}em`, maxWidth: '500px', margin: '10px 0' }}>Potato Potato is a video production company based in Portland, Oregon. If you are interested in talking about your next video project, contact us.</p>
+          <a className="email" href="mailto:Info@potatoportland.com" style={{fontSize: `${1.25*multiplier}em`, color: '#E4794A' }}>Email: Info@potatoportland.com</a>
+          <div style={{ display: 'flex', marginTop: '10px', justifyContent: 'center', alignItems: 'center' }}>
+            <a className="social-icons" href="mailto:Info@potatoportland.com" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={mail} alt="email" /></a>
+            <a className="social-icons" href="https://vimeo.com/user58377879" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={vimeo} alt="vimeo" /></a>
+            <a className="social-icons" href="https://www.facebook.com/potatopotatopdx/" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={facebook} alt="facebook" /></a>
+            <a className="social-icons" href="https://www.instagram.com/potatopotatopdx/" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={instagram} alt="instagram" /></a>
           </div>
         </div>
       </div>
