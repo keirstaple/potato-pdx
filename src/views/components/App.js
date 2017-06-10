@@ -37,6 +37,7 @@ class App extends Component {
       windowSize: { },
       arrowSize: '2x',
       polygon: '',
+      polyHeight: '',
     }
     this.handleScroll = throttle(this.handleScroll.bind(this), 5);
   }
@@ -53,7 +54,7 @@ class App extends Component {
 
   windowResize(windowSize) {
     const { windowHeight, windowWidth } = windowSize;
-    this.setState({ windowSize, polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
+    this.setState({ windowSize, polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0`, polyHeight: `${windowHeight*0.5}px` });
 
     if(windowSize.windowWidth < 1440) {
       this.setState({ arrowSize: '2x' });
@@ -70,6 +71,7 @@ class App extends Component {
     const pageTop = window.pageYOffset * 0.65;
     const newTop = (top - (pageTop * speed));
     const newAngle = (100 + (newTop - 6.5))/100;
+    let aboutSectionPolyStyle = this.refs.aboutSectionPoly.style;
     let aboutSectionStyle = this.refs.aboutSection.style;
     let iconStyle = this.refs.arrowIcon.style;
 
@@ -86,21 +88,22 @@ class App extends Component {
     }
 
     if(newTop < -2.5) {
+      aboutSectionPolyStyle.top = `${newTop}vh`;
       aboutSectionStyle.top = `${newTop}vh`;
-      iconStyle.top = `${newTop + 39}vh`;
+      iconStyle.top = `${newTop + 47.5}vh`;
     }
 
     if(newTop <= -43.5 && this.state.windowSize.windowWidth > 414) {
-      // aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
-      // aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+      // aboutSectionPolyStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+      // aboutSectionPolyStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
     }
     console.log('newTop', newTop);
     if(newTop > -43.5 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
-      // aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
-      // aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
+      // aboutSectionPolyStyle.clipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
+      // aboutSectionPolyStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
       console.log('newAngle...........', newAngle);
-      this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*0.5} 0 0` });
+      this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*0.5} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
       // polygonPoints.y = 400;
     }
   }
@@ -112,14 +115,15 @@ class App extends Component {
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
 
-        <svg ref="aboutSection" style={{ height: '100vh', top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3'}}>
-          <g stroke="none" strokeWidth="0" fill="none" fillRule="evenodd">
-            <g fill="white">
-              <polygon ref="polygon" points={this.state.polygon}>
-              </polygon>
-            </g>
+        <svg stroke="none" ref="aboutSectionPoly" style={{ height: `${this.state.polyHeight}`, top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3'}}>
+          <g fill="white">
+            <polygon ref="polygon" points={this.state.polygon}>
+            </polygon>
           </g>
         </svg>
+        <div ref="aboutSection" style={{ position: 'fixed', zIndex: '4' }}>
+          <About display={this.state.display} />
+        </div>
 
         <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '6', margin: '0', padding: '0' }}>
           <FontAwesome name="play" size={this.state.arrowSize} style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
@@ -142,9 +146,3 @@ export default connect(
     initializeApp: () => dispatch(initializeApp())
   })
 )(App);
-
-
-
-
-
-// <About display={this.state.display} />
