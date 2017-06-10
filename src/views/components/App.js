@@ -89,7 +89,7 @@ class App extends Component {
 
     if(newTop < -2.5) {
       aboutSectionPolyStyle.top = `${newTop}vh`;
-      aboutSectionStyle.top = `${newTop}vh`;
+      aboutSectionStyle.top = `${newTop - 20}vh`;
       iconStyle.top = `${newTop + 47.5}vh`;
     }
 
@@ -121,7 +121,8 @@ class App extends Component {
             </polygon>
           </g>
         </svg>
-        <div ref="aboutSection" style={{ position: 'fixed', zIndex: '4' }}>
+
+        <div ref="aboutSection" style={{ position: 'fixed', zIndex: '4', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)'  }}>
           <About display={this.state.display} />
         </div>
 

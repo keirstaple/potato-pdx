@@ -13,7 +13,8 @@ class About extends Component {
     super();
     this.state = {
       multiplier: 1,
-      margin: '40vh auto'
+      margin: '40vh auto',
+      aboutWidth: '500px',
     }
   }
 
@@ -21,20 +22,19 @@ class About extends Component {
     this.setState({ windowSize });
 
     if(windowSize.windowWidth < 414) {
-      this.setState({ multiplier: 0.5, margin: '35vh auto' })
+      this.setState({ multiplier: 0.5, aboutWidth: '200px' });
     }
   }
   render() {
     const multiplier = this.state.multiplier;
     return (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', width: `${this.state.aboutWidth}` }}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
-        {this.children}
-        <div style={{ display: `${this.props.display}`, position: 'absolute', margin: `${this.state.margin}`, textAlign: 'center', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)'}}>
+        <div style={{ display: `${this.props.display}`, position: 'absolute', margin: `${this.state.margin}`, textAlign: 'center' }}>
           <h1 className="contact-us" style={{ fontSize: `${3*multiplier}em`}}>CONTACT US</h1>
           <hr />
-          <p className="email" style={{fontSize: `${1.25*multiplier}em`, maxWidth: '500px', margin: '10px 0' }}>Potato Potato is a video production company based in Portland, Oregon. If you are interested in talking about your next video project, contact us.</p>
-          <a className="email" href="mailto:Info@potatoportland.com" style={{fontSize: `${1.25*multiplier}em`, color: '#E4794A' }}>Email: Info@potatoportland.com</a>
+          <p className="email" style={{fontSize: `${1.25*multiplier}em`, margin: '10px 0' }}>Potato Potato is a video production company based in Portland, Oregon. If you are interested in talking about your next video project, contact us.</p>
+          <a className="email" href="mailto:Info@potatoportland.com" style={{fontSize: `${1.25*multiplier}em`, color: '#E4794A' }}>Info@potatoportland.com</a>
           <div style={{ display: 'flex', marginTop: '10px', justifyContent: 'center', alignItems: 'center' }}>
             <a className="social-icons" href="mailto:Info@potatoportland.com" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={mail} alt="email" /></a>
             <a className="social-icons" href="https://vimeo.com/user58377879" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={vimeo} alt="vimeo" /></a>
