@@ -24,7 +24,7 @@ class App extends Component {
   static defaultProps = {
     width: 'auto',
     height: 'auto',
-    top: -45.5,
+    top: -43.5,
     left: 'inherit',
     right: 'inherit',
     speed: -0.08,
@@ -36,11 +36,13 @@ class App extends Component {
       display: 'none',
       windowSize: { },
       arrowSize: '2x',
+      polygon: '',
     }
     this.handleScroll = throttle(this.handleScroll.bind(this), 5);
   }
 
   componentDidMount() {
+    // const { windowWidth, windowHeight } = this.state.windowSize;
     window.addEventListener('scroll', this.handleScroll);
     this.props.initializeApp();
   }
@@ -50,7 +52,8 @@ class App extends Component {
   }
 
   windowResize(windowSize) {
-    this.setState({ windowSize });
+    const { windowHeight, windowWidth } = windowSize;
+    this.setState({ windowSize, polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
 
     if(windowSize.windowWidth < 1440) {
       this.setState({ arrowSize: '2x' });
@@ -61,18 +64,18 @@ class App extends Component {
 
   handleScroll(event) {
     const { speed, top } = this.props;
-
+    const { windowWidth, windowHeight } = this.state.windowSize;
     // Top positons
     //multiply by .65 to convert pixels to vh
     const pageTop = window.pageYOffset * 0.65;
     const newTop = (top - (pageTop * speed));
-    const newAngle = 100 + (newTop - 4.5);
-    const aboutSectionStyle = this.refs.aboutSection.style;
-    const iconStyle = this.refs.arrowIcon.style;
+    const newAngle = (100 + (newTop - 6.5))/100;
+    let aboutSectionStyle = this.refs.aboutSection.style;
+    let iconStyle = this.refs.arrowIcon.style;
 
-    if(pageTop > 40.5) {
+    if (pageTop > 40.5) {
       iconStyle.display = 'none';
-    } else if(pageTop <= 40.5) {
+    } else if (pageTop <= 40.5) {
       iconStyle.display = 'block';
     }
 
@@ -84,17 +87,21 @@ class App extends Component {
 
     if(newTop < -2.5) {
       aboutSectionStyle.top = `${newTop}vh`;
-      iconStyle.top = `${newTop + 49}vh`;
+      iconStyle.top = `${newTop + 39}vh`;
     }
 
-    if(newTop < -45.3 && this.state.windowSize.windowWidth > 414) {
-      aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
-      aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+    if(newTop <= -43.5 && this.state.windowSize.windowWidth > 414) {
+      // aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+      // aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+      this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
     }
-
-    if(newTop > -45.3 && newAngle <= 90 && this.state.windowSize.windowWidth > 414) {
-      aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
-      aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
+    console.log('newTop', newTop);
+    if(newTop > -43.5 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
+      // aboutSectionStyle.clipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
+      // aboutSectionStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
+      console.log('newAngle...........', newAngle);
+      this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*0.5} 0 0` });
+      // polygonPoints.y = 400;
     }
   }
 
@@ -105,9 +112,14 @@ class App extends Component {
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
 
-        <div ref="aboutSection" style={{ height: '103.5vh', top: '-45.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'white', WebkitClipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)'}}>
-          <About display={this.state.display} />
-        </div>
+        <svg ref="aboutSection" style={{ height: '100vh', top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3'}}>
+          <g stroke="none" strokeWidth="0" fill="none" fillRule="evenodd">
+            <g fill="white">
+              <polygon ref="polygon" points={this.state.polygon}>
+              </polygon>
+            </g>
+          </g>
+        </svg>
 
         <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '6', margin: '0', padding: '0' }}>
           <FontAwesome name="play" size={this.state.arrowSize} style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
@@ -130,3 +142,9 @@ export default connect(
     initializeApp: () => dispatch(initializeApp())
   })
 )(App);
+
+
+
+
+
+// <About display={this.state.display} />

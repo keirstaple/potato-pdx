@@ -27,8 +27,9 @@ class About extends Component {
   render() {
     const multiplier = this.state.multiplier;
     return (
-      <div style={{ position: 'relative'}}>
+      <div style={{ position: 'relative', zIndex: '4' }}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
+        {this.children}
         <div style={{ display: `${this.props.display}`, position: 'absolute', margin: `${this.state.margin}`, textAlign: 'center', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)'}}>
           <h1 className="contact-us" style={{ fontSize: `${3*multiplier}em`}}>CONTACT US</h1>
           <hr />
