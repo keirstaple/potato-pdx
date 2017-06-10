@@ -14,7 +14,7 @@ class About extends Component {
     this.state = {
       multiplier: 1,
       margin: '40vh auto',
-      aboutWidth: '500px',
+      aboutWidth: '450px',
     }
   }
 
@@ -31,10 +31,10 @@ class About extends Component {
       <div style={{ position: 'relative', width: `${this.state.aboutWidth}` }}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <div style={{ display: `${this.props.display}`, position: 'absolute', margin: `${this.state.margin}`, textAlign: 'center' }}>
-          <h1 className="contact-us" style={{ fontSize: `${3*multiplier}em`}}>CONTACT US</h1>
+          <h1 className="contact-us" style={{ fontSize: `${3*multiplier}em`}}>LET'S TALK</h1>
           <hr />
-          <p className="email" style={{fontSize: `${1.25*multiplier}em`, margin: '10px 0' }}>Potato Potato is a video production company based in Portland, Oregon. If you are interested in talking about your next video project, contact us.</p>
-          <a className="email" href="mailto:Info@potatoportland.com" style={{fontSize: `${1.25*multiplier}em`, color: '#E4794A' }}>Info@potatoportland.com</a>
+          <p className="about-us" style={{fontSize: `${1.25*multiplier}em`, margin: '10px 0' }}>Potato Potato is a video production company based in Portland, Oregon.</p>
+          <span className="email-phone" style={{fontSize: `${1.25*multiplier}em`}}><a className="email" style={{ textDecoration: 'none', color: '#E4794A' }} href="mailto:Info@potatoportland.com">Info@potatoportland.com</a> || (503) 758-4663</span>
           <div style={{ display: 'flex', marginTop: '10px', justifyContent: 'center', alignItems: 'center' }}>
             <a className="social-icons" href="mailto:Info@potatoportland.com" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={mail} alt="email" /></a>
             <a className="social-icons" href="https://vimeo.com/user58377879" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={vimeo} alt="vimeo" /></a>

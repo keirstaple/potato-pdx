@@ -89,7 +89,7 @@ class App extends Component {
 
     if(newTop < -2.5) {
       aboutSectionPolyStyle.top = `${newTop}vh`;
-      aboutSectionStyle.top = `${newTop - 20}vh`;
+      aboutSectionStyle.top = `${newTop - 15}vh`;
       iconStyle.top = `${newTop + 47.5}vh`;
     }
 
