@@ -30,7 +30,7 @@ class VideoColumns extends Component {
     let featuredVideos = [];
     if (this.props.videos) {
       featuredVideos = this.props.videos.map(item => {
-        if(item.tags.filter(tag => tag.name.includes('feature')).length > 0) {
+        if(item.tags.filter(tag => tag.name.indexOf("feature") > -1).length > 0) {
           console.log('item tag', item)
           return item
         }
