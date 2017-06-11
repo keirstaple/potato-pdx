@@ -39,13 +39,14 @@ class App extends Component {
       polygon: '',
       polyHeight: '',
       top: '',
+      mobileSafari: false,
     }
     this.handleScroll = throttle(this.handleScroll.bind(this), 5);
   }
 
   componentDidMount() {
-    const ua = window.navigator.userAgent;
     window.addEventListener('scroll', this.handleScroll);
+    const ua = window.navigator.userAgent;
     if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1) {
       // const clientHeight = document.documentElement.clientHeight;
       // const offSet = clientHeight * (this.props.top/100);
@@ -53,7 +54,9 @@ class App extends Component {
       // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
       // this.setState({ top });
       window.scroll(0, 44);
+      this.setState({ mobileSafari: true });
     };
+    console.log('pageY', window.pageYOffset);
     this.props.initializeApp();
   }
 
@@ -83,6 +86,20 @@ class App extends Component {
     let aboutSectionPolyStyle = this.refs.aboutSectionPoly.style;
     let aboutSectionStyle = this.refs.aboutSection.style;
     let iconStyle = this.refs.arrowIcon.style;
+
+    const ua = window.navigator.userAgent;
+    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1 && pageTop === 0) {
+      // const clientHeight = document.documentElement.clientHeight;
+      // const offSet = clientHeight * (this.props.top/100);
+      // const top = `${offSet + 44}px`;
+      // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
+      // this.setState({ top });
+      window.scroll(0, 44);
+      // this.setState({ mobileSafari: true });
+    };
+
+    console.log('pageTop', pageTop, 'newTop', newTop, 'newAngle', newAngle);
+    // window.scroll(0, 44);
 
     if (pageTop > 40.5) {
       iconStyle.display = 'none';
