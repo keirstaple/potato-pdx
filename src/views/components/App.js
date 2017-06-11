@@ -24,7 +24,7 @@ class App extends Component {
   static defaultProps = {
     width: 'auto',
     height: 'auto',
-    top: -44,
+    top: -43.75,
     left: 'inherit',
     right: 'inherit',
     speed: -0.08,
@@ -38,14 +38,25 @@ class App extends Component {
       arrowSize: '2x',
       polygon: '',
       polyHeight: '',
+      top: '',
     }
     this.handleScroll = throttle(this.handleScroll.bind(this), 5);
   }
 
   componentDidMount() {
-    // const { windowWidth, windowHeight } = this.state.windowSize;
     window.addEventListener('scroll', this.handleScroll);
     this.props.initializeApp();
+  }
+
+  componentWillMount() {
+    const ua = window.navigator.userAgent;
+    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1) {
+      const clientHeight = document.documentElement.clientHeight;
+      const offSet = clientHeight * (this.props.top/100);
+      const top = `${offSet + 44}px`;
+      console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
+      this.setState({ top });
+    };
   }
 
   componentWillUnmount() {
@@ -93,26 +104,27 @@ class App extends Component {
       iconStyle.top = `${newTop + 47.5}vh`;
     }
 
-    if (newTop <= -44 && this.state.windowSize.windowWidth > 414) {
+    if (newTop <= -43.75 && this.state.windowSize.windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
     }
 
-    if (newTop > -44 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
+    if (newTop > -43.75 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*0.5} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
     }
-    if (newTop > -44 && newAngle <= 0.90 && this.state.windowSize.windowWidth < 414) {
+    if (newTop > -43.75 && newAngle <= 0.90 && this.state.windowSize.windowWidth < 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*newAngle} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
     }
   }
 
   render() {
     let scrollHeight = window.innerHeight * 2.15;
+    const fromTop = this.state.top || `${this.props.top}vh`;
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
 
-        <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: '-44vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'transparent' }}>
+        <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: `${fromTop}`, width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'transparent' }}>
           <polygon ref="polygon" fill="white" points={this.state.polygon} />
         </svg>
 
