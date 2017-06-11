@@ -115,11 +115,8 @@ class App extends Component {
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
 
-        <svg stroke="none" ref="aboutSectionPoly" style={{ height: `${this.state.polyHeight}`, top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'transparent' }}>
-          <g fill="white">
-            <polygon ref="polygon" points={this.state.polygon}>
-            </polygon>
-          </g>
+        <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'transparent' }}>
+          <polygon ref="polygon" fill="white" points={this.state.polygon} />
         </svg>
 
         <div ref="aboutSection" style={{ position: 'fixed', zIndex: '4', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)'  }}>
