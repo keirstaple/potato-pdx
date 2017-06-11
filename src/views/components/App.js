@@ -50,7 +50,8 @@ class App extends Component {
 
   componentWillMount() {
     const ua = window.navigator.userAgent;
-    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1) {
+    console.log('uaaaaa', ua);
+    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('Chrome') !== 1) {
       const clientHeight = document.documentElement.clientHeight;
       const offSet = clientHeight * (this.props.top/100);
       const top = `${offSet + 44}px`;
