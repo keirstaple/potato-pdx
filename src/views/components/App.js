@@ -48,17 +48,17 @@ class App extends Component {
     this.props.initializeApp();
   }
 
-  componentWillMount() {
-    const ua = window.navigator.userAgent;
-    console.log('uaaaaa', ua);
-    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1) {
-      const clientHeight = document.documentElement.clientHeight;
-      const offSet = clientHeight * (this.props.top/100);
-      const top = `${offSet + 44}px`;
-      console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
-      this.setState({ top });
-    };
-  }
+  // componentWillMount() {
+  //   const ua = window.navigator.userAgent;
+  //   console.log('uaaaaa', ua);
+  //   if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1) {
+  //     const clientHeight = document.documentElement.clientHeight;
+  //     const offSet = clientHeight * (this.props.top/100);
+  //     const top = `${offSet + 44}px`;
+  //     console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
+  //     this.setState({ top });
+  //   };
+  // }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -119,7 +119,7 @@ class App extends Component {
 
   render() {
     let scrollHeight = window.innerHeight * 2.15;
-    const fromTop = this.state.top || `${this.props.top}vh`;
+    const fromTop = `${this.props.top}vh`;
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
