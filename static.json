@@ -3,8 +3,5 @@
   "clean_urls": false,
   "routes": {
     "/**": "index.html"
-  },
-  "env": {
-    "NODE_MODULES_CACHE": "false",
   }
 }
