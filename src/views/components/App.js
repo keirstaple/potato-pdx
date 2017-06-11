@@ -44,21 +44,18 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const ua = window.navigator.userAgent;
     window.addEventListener('scroll', this.handleScroll);
+    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1) {
+      // const clientHeight = document.documentElement.clientHeight;
+      // const offSet = clientHeight * (this.props.top/100);
+      // const top = `${offSet + 44}px`;
+      // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
+      // this.setState({ top });
+      window.scroll(0, 44);
+    };
     this.props.initializeApp();
   }
-
-  // componentWillMount() {
-  //   const ua = window.navigator.userAgent;
-  //   console.log('uaaaaa', ua);
-  //   if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1) {
-  //     const clientHeight = document.documentElement.clientHeight;
-  //     const offSet = clientHeight * (this.props.top/100);
-  //     const top = `${offSet + 44}px`;
-  //     console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
-  //     this.setState({ top });
-  //   };
-  // }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
