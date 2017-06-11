@@ -105,14 +105,14 @@ class App extends Component {
       iconStyle.top = `${newTop + 47.5}vh`;
     }
 
-    if (newTop <= -43.75 && this.state.windowSize.windowWidth > 414) {
+    if (newTop <= top && windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
     }
 
-    if (newTop > -43.75 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
+    if (newTop > top && newAngle <= 0.90 && windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*0.5} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
     }
-    if (newTop > -43.75 && newAngle <= 0.90 && this.state.windowSize.windowWidth < 414) {
+    if (newTop > top && newAngle <= 0.90 && windowWidth < 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*newAngle} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
     }
   }
