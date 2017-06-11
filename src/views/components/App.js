@@ -24,7 +24,7 @@ class App extends Component {
   static defaultProps = {
     width: 'auto',
     height: 'auto',
-    top: -43.5,
+    top: -44,
     left: 'inherit',
     right: 'inherit',
     speed: -0.08,
@@ -93,14 +93,14 @@ class App extends Component {
       iconStyle.top = `${newTop + 47.5}vh`;
     }
 
-    if (newTop <= -43.5 && this.state.windowSize.windowWidth > 414) {
+    if (newTop <= -44 && this.state.windowSize.windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
     }
 
-    if (newTop > -43.5 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
+    if (newTop > -44 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*0.5} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
     }
-    if (newTop > -43.5 && newAngle <= 0.90 && this.state.windowSize.windowWidth < 414) {
+    if (newTop > -44 && newAngle <= 0.90 && this.state.windowSize.windowWidth < 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*newAngle} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
     }
   }
@@ -112,7 +112,7 @@ class App extends Component {
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
 
-        <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: '-43.5vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'transparent' }}>
+        <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: '-44vh', width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'transparent' }}>
           <polygon ref="polygon" fill="white" points={this.state.polygon} />
         </svg>
 
