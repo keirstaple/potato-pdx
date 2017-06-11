@@ -53,7 +53,7 @@ class App extends Component {
       // const top = `${offSet + 44}px`;
       // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
       // this.setState({ top });
-      window.scroll(0, 44);
+      window.scroll(0, 69);
       this.setState({ mobileSafari: true });
     };
     console.log('pageY', window.pageYOffset);
@@ -88,13 +88,13 @@ class App extends Component {
     let iconStyle = this.refs.arrowIcon.style;
 
     const ua = window.navigator.userAgent;
-    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1 && pageTop === 0) {
+    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1 && pageTop <= 69) {
       // const clientHeight = document.documentElement.clientHeight;
       // const offSet = clientHeight * (this.props.top/100);
       // const top = `${offSet + 44}px`;
       // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
       // this.setState({ top });
-      window.scroll(0, 44);
+      window.scroll(0, 69);
       // this.setState({ mobileSafari: true });
     };
 
