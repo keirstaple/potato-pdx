@@ -31,7 +31,6 @@ class VideoColumns extends Component {
     if (this.props.videos) {
       featuredVideos = this.props.videos.map(item => {
         if(item.tags.filter(tag => tag.name.indexOf("feature") > -1).length > 0) {
-          console.log('item tag', item)
           return item
         }
         return null;
@@ -39,7 +38,6 @@ class VideoColumns extends Component {
     }
 
     return featuredVideos.sort((a, b) => parseFloat(a.tags[a.tags.length-1].tag) - parseFloat(b.tags[b.tags.length-1].tag)).map((item, idx) => {
-      console.log('item', item)
       // const thumbnail = item.pictures.sizes[5].link;
       let thumbnail;
       let columnWidth;
@@ -67,7 +65,6 @@ class VideoColumns extends Component {
       if(this.state.windowSize.windowWidth < 750) {
         displayVersion = 'block';
         iconSize = '2x';
-        // console.log('iconSize', iconSize)
       } else if(this.state.windowSize.windowWidth >= 750) {
         displayVersion = this.state[idx] || 'none';
         iconSize = '3x';

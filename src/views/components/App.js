@@ -93,18 +93,15 @@ class App extends Component {
       iconStyle.top = `${newTop + 47.5}vh`;
     }
 
-    if(newTop <= -43.5 && this.state.windowSize.windowWidth > 414) {
-      // aboutSectionPolyStyle.clipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
-      // aboutSectionPolyStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% 50%, 0 50%)`;
+    if (newTop <= -43.5 && this.state.windowSize.windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*0.5} 0 ${windowHeight*0.5} 0 0` });
     }
-    console.log('newTop', newTop);
-    if(newTop > -43.5 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
-      // aboutSectionPolyStyle.clipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
-      // aboutSectionPolyStyle.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${newAngle}%, 0 50%)`;
-      console.log('newAngle...........', newAngle);
+
+    if (newTop > -43.5 && newAngle <= 0.90 && this.state.windowSize.windowWidth > 414) {
       this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*0.5} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
-      // polygonPoints.y = 400;
+    }
+    if (newTop > -43.5 && newAngle <= 0.90 && this.state.windowSize.windowWidth < 414) {
+      this.setState({ polygon: `${windowWidth} 0 ${windowWidth} ${windowHeight*newAngle} 0 ${windowHeight*newAngle} 0 0`, polyHeight: `${windowHeight*newAngle}px` });
     }
   }
 
