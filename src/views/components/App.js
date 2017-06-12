@@ -137,7 +137,7 @@ class App extends Component {
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
-        <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '5' }} />
+        <img src={logo} alt="logo" style={{ position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', width: 'auto', zIndex: '4' }} />
 
         <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: `${fromTop}`, width: '100vw', position: 'fixed', zIndex: '3', backgroundColor: 'transparent' }}>
           <polygon ref="polygon" fill="white" points={this.state.polygon} />
@@ -147,7 +147,7 @@ class App extends Component {
           <About display={this.state.display} />
         </div>
 
-        <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '6', margin: '0', padding: '0' }}>
+        <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '4', margin: '0', padding: '0' }}>
           <FontAwesome name="play" size={this.state.arrowSize} style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
         </div>
 
