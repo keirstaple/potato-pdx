@@ -4,7 +4,7 @@ import { About, VideoColumns } from './../index';
 import { initializeApp } from './../../state';
 import { WindowResizeListener } from 'react-window-resize-listener';
 import throttle from 'lodash.throttle';
-import logo from '../../../public/images/logo_wordmark.png';
+import logo from '../../../public/images/logo_wordmark_2.png';
 import FontAwesome from 'react-fontawesome';
 
 class App extends Component {
