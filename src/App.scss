@@ -24,7 +24,7 @@ $break-large: 1200px;
 .video-column {
   transition: all .5s ease-in-out;
   &:hover {
-    z-index: 7;
+    z-index: 3;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);

@@ -38,7 +38,7 @@ class VideoPlayer extends Component {
     return(
       <div>
         <VideoColumns />
-        <div onClick={this.handleClick.bind(this)} style={{position: 'relative', height: '100vh', width: '100vw', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '4'}}>
+        <div onClick={this.handleClick.bind(this)} style={{position: 'relative', height: '100vh', width: '100vw', backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '7'}}>
           <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
           { this.renderVideo() }
         </div>
