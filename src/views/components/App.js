@@ -55,7 +55,7 @@ class App extends Component {
       // this.setState({ top });
       // window.scroll(0, 69);
       this.setState({ mobileSafari: true });
-      document.body.style.padding = '0 0 69px 0';
+      // document.body.style.padding = '0 0 69px 0';
     };
     console.log('pageY', window.pageYOffset);
     this.props.initializeApp();
@@ -132,6 +132,10 @@ class App extends Component {
     }
   }
 
+  mobilePadding(event) {
+    event.preventDefault();
+  }
+
   render() {
     let scrollHeight = window.innerHeight * 2.15;
     const fromTop = `${this.props.top}vh`;
@@ -141,6 +145,13 @@ class App extends Component {
       logoWidth = '15vw';
     } else {
       logoWidth = '7.5vw';
+    }
+
+    let safariPadding;
+    if( this.state.mobileSafari ) {
+      safariPadding = <div style={{ height: '69px', width: '100vw'}} onTouchMove={this.mobilePadding.bind(this)} />;
+    } else {
+      safariPadding = <div style={{ height: '0', width: '0' }} />;
     }
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
@@ -163,6 +174,7 @@ class App extends Component {
           <VideoColumns />
         </div>
         { this.props.children }
+        { safariPadding }
       </div>
     );
   }
