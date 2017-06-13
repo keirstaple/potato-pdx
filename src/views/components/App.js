@@ -53,8 +53,9 @@ class App extends Component {
       // const top = `${offSet + 44}px`;
       // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
       // this.setState({ top });
-      window.scroll(0, 69);
+      // window.scroll(0, 69);
       this.setState({ mobileSafari: true });
+      document.body.style.padding = '0 0 69px 0';
     };
     console.log('pageY', window.pageYOffset);
     this.props.initializeApp();
@@ -87,18 +88,18 @@ class App extends Component {
     let aboutSectionStyle = this.refs.aboutSection.style;
     let iconStyle = this.refs.arrowIcon.style;
 
-    const ua = window.navigator.userAgent;
-    if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1 && pageTop <= 69) {
-      // const clientHeight = document.documentElement.clientHeight;
-      // const offSet = clientHeight * (this.props.top/100);
-      // const top = `${offSet + 44}px`;
-      // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
-      // this.setState({ top });
-      window.scroll(0, 69);
-      // this.setState({ mobileSafari: true });
-    };
-
-    console.log('pageTop', pageTop, 'newTop', newTop, 'newAngle', newAngle);
+    // const ua = window.navigator.userAgent;
+    // if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1 && pageTop <= 69) {
+    //   // const clientHeight = document.documentElement.clientHeight;
+    //   // const offSet = clientHeight * (this.props.top/100);
+    //   // const top = `${offSet + 44}px`;
+    //   // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
+    //   // this.setState({ top });
+    //   // window.scroll(0, 69);
+    //   // this.setState({ mobileSafari: true });
+    // };
+    //
+    // console.log('pageTop', pageTop, 'newTop', newTop, 'newAngle', newAngle);
     // window.scroll(0, 44);
 
     if (pageTop > 40.5) {
@@ -135,10 +136,16 @@ class App extends Component {
     let scrollHeight = window.innerHeight * 2.15;
     const fromTop = `${this.props.top}vh`;
     const logo = 'https://c1.staticflickr.com/5/4276/35107790522_87343b855a_z.jpg';
+    let logoWidth;
+    if (this.state.windowSize.windowWidth < 414) {
+      logoWidth = '15vw';
+    } else {
+      logoWidth = '7.5vw';
+    }
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
-        <div alt="logo" style={{ backgroundImage: `url(${logo})`, imageRendering: 'WebkitOptimizeContrast', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', maxWidth: '7.5vw', zIndex: '6' }} />
+        <div alt="logo" style={{ backgroundImage: `url(${logo})`, imageRendering: 'WebkitOptimizeContrast', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', maxWidth: `${logoWidth}`, zIndex: '6' }} />
 
         <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: `${fromTop}`, width: '100vw', position: 'fixed', zIndex: '5', backgroundColor: 'transparent' }}>
           <polygon ref="polygon" fill="white" points={this.state.polygon} />
