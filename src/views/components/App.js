@@ -146,7 +146,7 @@ class App extends Component {
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
-        <div alt="logo" style={{ backgroundImage: `url(${logo})`, imageRendering: 'WebkitOptimizeContrast', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', maxWidth: `${logoWidth}`, zIndex: '6' }} />
+        <div alt="logo" style={{ backgroundImage: `url(${logo})`, imageRendering: 'WebkitOptimizeContrast', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundColor: 'white', backgroundPosition: 'left center', position: 'fixed', height: '3.5vh', top: '0', left: '0', bottom: '0', right: '0', width: '100vw', zIndex: '6', border: '10px solid white' }} />
 
         <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: `${fromTop}`, width: '100vw', position: 'fixed', zIndex: '5', backgroundColor: 'transparent' }}>
           <polygon ref="polygon" fill="white" points={this.state.polygon} />
