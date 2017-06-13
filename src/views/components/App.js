@@ -132,27 +132,17 @@ class App extends Component {
     }
   }
 
-  mobilePadding(event) {
-    event.preventDefault();
-  }
-
   render() {
     let scrollHeight = window.innerHeight * 2.15;
     const fromTop = `${this.props.top}vh`;
     const logo = 'https://c1.staticflickr.com/5/4276/35107790522_87343b855a_z.jpg';
     let logoWidth;
-    if (this.state.windowSize.windowWidth < 414) {
+    if (this.state.windowSize.windowWidth <= 768) {
       logoWidth = '15vw';
     } else {
       logoWidth = '7.5vw';
     }
 
-    let safariPadding;
-    if( this.state.mobileSafari ) {
-      safariPadding = <div style={{ height: '69px', width: '100vw'}} onTouchMove={this.mobilePadding.bind(this)} />;
-    } else {
-      safariPadding = <div style={{ height: '0', width: '0' }} />;
-    }
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
@@ -174,7 +164,6 @@ class App extends Component {
           <VideoColumns />
         </div>
         { this.props.children }
-        { safariPadding }
       </div>
     );
   }

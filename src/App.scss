@@ -89,6 +89,12 @@ hr {
   border: none;
 }
 
+html, body {
+  height: 100%;
+  // overflow-y: scroll;
+  // -webkit-overflow-scrolling: touch;
+}
+
 body {
   margin: 0;
   padding: 0;
