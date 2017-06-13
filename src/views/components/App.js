@@ -4,7 +4,7 @@ import { About, VideoColumns } from './../index';
 import { initializeApp } from './../../state';
 import { WindowResizeListener } from 'react-window-resize-listener';
 import throttle from 'lodash.throttle';
-import logo from '../../../public/images/logo_wordmark_2.png';
+// import logo from '../../../public/images/logo_wordmark_2.png';
 import FontAwesome from 'react-fontawesome';
 
 class App extends Component {
@@ -134,10 +134,11 @@ class App extends Component {
   render() {
     let scrollHeight = window.innerHeight * 2.15;
     const fromTop = `${this.props.top}vh`;
+    const logo = 'https://c1.staticflickr.com/5/4276/35107790522_87343b855a_z.jpg';
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
-        <div alt="logo" style={{ backgroundImage: `url(${logo})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', maxWidth: '7.5vw', zIndex: '7' }} />
+        <div alt="logo" style={{ backgroundImage: `url(${logo})`, imageRendering: 'WebkitOptimizeContrast', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', position: 'fixed', height: '3.5vh', top: '1.5vh', left: '1vw', bottom: '1.5vh', right: '1vw', maxWidth: '7.5vw', zIndex: '6' }} />
 
         <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: `${fromTop}`, width: '100vw', position: 'fixed', zIndex: '5', backgroundColor: 'transparent' }}>
           <polygon ref="polygon" fill="white" points={this.state.polygon} />
