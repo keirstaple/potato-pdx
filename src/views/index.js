@@ -4,8 +4,8 @@ import App from './components/App';
 // import NavBar from './components/NavBar';
 import VideoPlayer from './components/VideoPlayer';
 // import NextButton from './components/NextButton';
-import ParallaxComponent from './components/ParallaxComponent';
+// import ParallaxComponent from './components/ParallaxComponent';
 import Root from './Root';
 import VideoColumns from './components/VideoColumns';
 
-export { About, App, ParallaxComponent, VideoColumns, VideoPlayer, Root };
+export { About, App, VideoColumns, VideoPlayer, Root };
