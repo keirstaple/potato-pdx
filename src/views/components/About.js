@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { WindowResizeListener } from 'react-window-resize-listener';
+import ReactGA from 'react-ga';
 import facebook from '../../../public/images/facebook.svg';
 import instagram from '../../../public/images/instagram.svg';
 import vimeo from '../../../public/images/vimeo.svg';
