@@ -35,10 +35,10 @@ class About extends Component {
           <hr />
           <p className="about-us" style={{fontSize: `${1.25*multiplier}em`, margin: '10px 0' }}>Potato Potato is a video production company based in Portland, Oregon.</p>
           <span className="email-phone" style={{fontSize: `${1.25*multiplier}em`}}>
-            <a className="email" style={{ textDecoration: 'none', color: '#E4794A' }} href="mailto:Info@potatoportland.com">Info@potatoportland.com</a> ||
-            <a className="email" href="tel:503-758-4663" style={{ textDecoration: 'none', color: '#E4794A' }}> (503) 758-4663</a>
+            <a className="email" style={{ textDecoration: 'none', color: '#E4794A' }} href="mailto:Info@potatoportland.com">Info@potatoportland.com</a> &#47;&#47;
+            <a className="email" href="tel:503-758-4663" style={{ textDecoration: 'none', color: '#E4794A' }}> 503.758.4663</a>
           </span>
-          <div style={{ display: 'flex', marginTop: '10px', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ display: 'flex', marginTop: '25px', justifyContent: 'center', alignItems: 'center' }}>
             <a className="social-icons" href="mailto:Info@potatoportland.com" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={mail} alt="email" /></a>
             <a className="social-icons" href="https://vimeo.com/user58377879" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={vimeo} alt="vimeo" /></a>
             <a className="social-icons" href="https://www.facebook.com/potatopotatopdx/" target="_blank"><img style={{ cursor: 'pointer', height: `${5*multiplier}vh`, width: "auto", margin: '0 10px'}} src={facebook} alt="facebook" /></a>
