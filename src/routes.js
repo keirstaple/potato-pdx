@@ -8,7 +8,6 @@ const trackingId = process.env.REACT_APP_GA_TRACKING_ID;
 ReactGA.initialize(`${trackingId}`);
 
 const logPageView = () => {
-  console.log('.......', trackingId);
   ReactGA.set({ page: window.location.pathname + window.location.search });
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
