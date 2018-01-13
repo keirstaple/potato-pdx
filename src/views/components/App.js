@@ -48,16 +48,8 @@ class App extends Component {
     window.addEventListener('scroll', this.handleScroll);
     const ua = window.navigator.userAgent;
     if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1) {
-      // const clientHeight = document.documentElement.clientHeight;
-      // const offSet = clientHeight * (this.props.top/100);
-      // const top = `${offSet + 44}px`;
-      // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
-      // this.setState({ top });
-      // window.scroll(0, 69);
       this.setState({ mobileSafari: true });
-      // document.body.style.padding = '0 0 69px 0';
     };
-    console.log('pageY', window.pageYOffset);
     this.props.initializeApp();
   }
 

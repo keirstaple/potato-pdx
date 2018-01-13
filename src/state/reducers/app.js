@@ -16,7 +16,6 @@ export const getVideosFailure = error => ({ type: FETCH_VIMEO_DATA_FAILURE, erro
 
 //thunks
 export const getVideosThunk = () => dispatch => {
-  console.log('getvideosthunk')
   dispatch(getVideos());
   return vimeoApi.fetchData().then(
     data => dispatch(getVideosSuccess(data)),
@@ -25,10 +24,8 @@ export const getVideosThunk = () => dispatch => {
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
-  console.log('reducer')
   switch(action.type) {
     case INIT_APP:
-      console.log('inside init case')
       return {
         ...state,
         appInitialized: true

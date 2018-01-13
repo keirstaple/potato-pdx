@@ -20,7 +20,6 @@ class NavBar extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.videos)
     if(this.props.pathname.includes('videos')) {
       this.setState({
         isOpen: true,
