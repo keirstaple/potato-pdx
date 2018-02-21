@@ -4,8 +4,9 @@ import { About, VideoColumns } from './../index';
 import { initializeApp } from './../../state';
 import { WindowResizeListener } from 'react-window-resize-listener';
 import throttle from 'lodash.throttle';
-// import logo from '../../../public/images/logo_wordmark_2.png';
 import FontAwesome from 'react-fontawesome';
+
+import { potatoLogo } from '../../consts/constants';
 
 class App extends Component {
   static propTypes = {
@@ -80,33 +81,19 @@ class App extends Component {
     let aboutSectionStyle = this.refs.aboutSection.style;
     let iconStyle = this.refs.arrowIcon.style;
 
-    // const ua = window.navigator.userAgent;
-    // if(ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1 && ua.indexOf('CriOS') === -1 && pageTop <= 69) {
-    //   // const clientHeight = document.documentElement.clientHeight;
-    //   // const offSet = clientHeight * (this.props.top/100);
-    //   // const top = `${offSet + 44}px`;
-    //   // console.log('hiiiiiiiiiiiiiiiiiiiii', document.documentElement.clientHeight);
-    //   // this.setState({ top });
-    //   // window.scroll(0, 69);
-    //   // this.setState({ mobileSafari: true });
-    // };
-    //
-    // console.log('pageTop', pageTop, 'newTop', newTop, 'newAngle', newAngle);
-    // window.scroll(0, 44);
-
     if (pageTop > 40.5) {
       iconStyle.display = 'none';
     } else if (pageTop <= 40.5) {
       iconStyle.display = 'block';
     }
 
-    if(pageTop >= 130) {
-      this.setState({ display: 'block' })
+    if (pageTop >= 130) {
+      this.setState({ display: 'block' });
     } else if(pageTop < 130 ) {
-      this.setState({ display: 'none' })
+      this.setState({ display: 'none' });
     }
 
-    if(newTop < -2.5) {
+    if (newTop < -2.5) {
       aboutSectionPolyStyle.top = `${newTop}vh`;
       aboutSectionStyle.top = `${newTop - 15}vh`;
       iconStyle.top = `${newTop + 47.5}vh`;
@@ -127,13 +114,7 @@ class App extends Component {
   render() {
     let scrollHeight = window.innerHeight * 2.15;
     const fromTop = `${this.props.top}vh`;
-    const logo = 'https://c1.staticflickr.com/5/4276/35107790522_87343b855a_z.jpg';
-    let logoWidth;
-    if (this.state.windowSize.windowWidth <= 768) {
-      logoWidth = '15vw';
-    } else {
-      logoWidth = '7.5vw';
-    }
+    const logo = potatoLogo;
 
     return (
       <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
