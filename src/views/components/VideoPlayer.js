@@ -12,11 +12,11 @@ class VideoPlayer extends Component {
     router: PropTypes.object
   };
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       windowSize: { },
-    }
+    };
   }
 
   renderVideo() {
