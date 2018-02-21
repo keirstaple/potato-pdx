@@ -5,8 +5,6 @@ import facebook from '../../../public/images/facebook.svg';
 import instagram from '../../../public/images/instagram.svg';
 import vimeo from '../../../public/images/vimeo.svg';
 import mail from '../../../public/images/mail.svg';
-// import akkuratBold from '../fonts/Akkurat-Bold.ttf';
-// import akkuratLight from '../fonts/Akkurat-Light.ttf';
 
 const handleOutbound = (eventLabel) => {
   ReactGA.event({
