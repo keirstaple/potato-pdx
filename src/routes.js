@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Router } from 'react-router';
 import { App, VideoPlayer } from './views';
 import ReactGA from 'react-ga';
-require('dotenv').config();
 
 const trackingId = process.env.REACT_APP_GA_TRACKING_ID;
 ReactGA.initialize(`${trackingId}`);

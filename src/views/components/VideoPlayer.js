@@ -20,10 +20,10 @@ class VideoPlayer extends Component {
   }
 
   renderVideo() {
-    const windowSize = this.state.windowSize
+    const windowSize = this.state.windowSize;
     return(
       <ReactPlayer url={`https://vimeo.com/${this.props.videoId}`} height={`${windowSize.windowWidth * (3/8)}`} width={`${windowSize.windowWidth * 0.75}px`} style={{position: 'absolute', margin: 'auto', top: '0', right: '0', bottom: '0', left: '0', maxHeight: `${windowSize.winowHeight * 0.95}` }} />
-    )
+    );
   }
 
   handleClick() {
@@ -31,7 +31,7 @@ class VideoPlayer extends Component {
   }
 
   windowResize(windowSize) {
-    this.setState({ windowSize })
+    this.setState({ windowSize });
   }
 
   render() {
@@ -44,7 +44,7 @@ class VideoPlayer extends Component {
         </div>
 
       </div>
-    )
+    );
   }
 };
 
