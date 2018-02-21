@@ -4,13 +4,17 @@ import { Link } from 'react-router';
 import { getVideosThunk, videoData } from './../../state';
 import { WindowResizeListener } from 'react-window-resize-listener';
 import FontAwesome from 'react-fontawesome';
+import _ from 'lodash';
+import getUrls from 'get-urls';
+
+const REACT_APP_VIMEO_ENVIRONMENT = process.env.REACT_APP_VIMEO_ENVIRONMENT;
 
 class VideoColumns extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       windowSize: { },
-    }
+    };
   }
 
   componentWillMount() {
@@ -19,42 +23,38 @@ class VideoColumns extends Component {
   }
 
   hoverEvent(value, idx) {
-    this.setState({ [idx]: value })
+    this.setState({ [idx]: value });
   }
 
   windowResize(windowSize) {
-    this.setState({ windowSize })
+    this.setState({ windowSize });
   }
 
   renderList() {
-    let featuredVideos = [];
-    if (this.props.videos) {
-      featuredVideos = this.props.videos.map(item => {
-        if(item.tags.filter(tag => tag.name.indexOf("feature") > -1).length > 0) {
-          return item
+    const { videos } = this.props;
+    const featuredVideos = _.filter(
+      videos,
+      video => {
+        const urlTags = _.filter(
+          video.tags,
+          tag => tag.name === `${REACT_APP_VIMEO_ENVIRONMENT}`,
+        );
+        if(!_.isEmpty(urlTags)) {
+          return video;
         }
-        return null;
-      }).filter(item => item !== null)
-    }
-
-    return featuredVideos.sort((a, b) => parseFloat(a.tags[a.tags.length-1].tag) - parseFloat(b.tags[b.tags.length-1].tag)).map((item, idx) => {
-      // const thumbnail = item.pictures.sizes[5].link;
-      let thumbnail;
+      }
+    );
+    return featuredVideos.map((item, idx) => {
       let columnWidth;
       let columnHeight;
       let displayVersion;
       let iconSize;
 
-      // thumbnail = item.pictures.sizes[5].link;
-      if(item.name === "Willamette Valley Vineyards Pork Ribs") {
-        thumbnail = "https://c1.staticflickr.com/5/4157/34021668473_295306fc70_o.jpg";
-      } else if(item.name === "Pearl Tavern") {
-        thumbnail = "https://c1.staticflickr.com/5/4274/34851654802_d90d0dc4f7_o.jpg";
-      } else if(item.name === "COLTY Fashion Show Intro") {
-        thumbnail = "https://c1.staticflickr.com/5/4219/34851655732_ecd49b087f_o.jpg"
-      }
+      const thumbnails = [];
+      getUrls(item.description).forEach(item => thumbnails.push(item));
+      const thumbnail = thumbnails ? thumbnails[0] : '';
 
-      if( this.state.windowSize.windowWidth < 750 ) {
+      if (this.state.windowSize.windowWidth < 750 ) {
         columnWidth = 100;
         columnHeight = 100 / featuredVideos.length;
       } else {
@@ -62,10 +62,10 @@ class VideoColumns extends Component {
         columnHeight = 100;
       }
 
-      if(this.state.windowSize.windowWidth < 750) {
+      if (this.state.windowSize.windowWidth < 750) {
         displayVersion = 'block';
         iconSize = '2x';
-      } else if(this.state.windowSize.windowWidth >= 750) {
+      } else if (this.state.windowSize.windowWidth >= 750) {
         displayVersion = this.state[idx] || 'none';
         iconSize = '3x';
       }
@@ -90,7 +90,6 @@ class VideoColumns extends Component {
   }
 
   render() {
-
     return (
       <div className="video-column-container" style={{display: 'flex', position: 'fixed', height: '100vh', width: '100vw', margin: '0'}}>
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />

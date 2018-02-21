@@ -75,9 +75,9 @@
     "reselect": "^2.5.4"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "start": "node --require dotenv/config scripts/start.js",
+    "build": "node --require dotenv/config scripts/build.js",
+    "test": "node --require dotenv/config scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
