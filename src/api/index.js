@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch';
-require('dotenv').config()
 
 const ROOT_URL = 'https://api.vimeo.com/users/user58377879/videos';
 const token = process.env.REACT_APP_ACCESS_TOKEN;
