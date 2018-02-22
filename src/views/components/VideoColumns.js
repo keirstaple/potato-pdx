@@ -6,8 +6,9 @@ import { WindowResizeListener } from 'react-window-resize-listener';
 import FontAwesome from 'react-fontawesome';
 import _ from 'lodash';
 import getUrls from 'get-urls';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
-const REACT_APP_VIMEO_ENVIRONMENT = process.env.REACT_APP_VIMEO_ENVIRONMENT;
+const env = runtimeEnv();
 
 class VideoColumns extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class VideoColumns extends Component {
       video => {
         const urlTags = _.filter(
           video.tags,
-          tag => tag.name === `${REACT_APP_VIMEO_ENVIRONMENT}`,
+          tag => tag.name === `${env.REACT_APP_VIMEO_ENVIRONMENT}`,
         );
         if(!_.isEmpty(urlTags)) {
           return video;
