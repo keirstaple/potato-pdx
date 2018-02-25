@@ -79,7 +79,6 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "dev": "node --require dotenv/config scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node --require dotenv/config scripts/test.js --env=jsdom"
   },
