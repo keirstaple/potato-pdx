@@ -73,7 +73,7 @@ class App extends Component {
     const { speed, top } = this.props;
     const { windowWidth, windowHeight } = this.state.windowSize;
     // Top positons
-    //multiply by .65 to convert pixels to vh
+    // multiply by .65 to convert pixels to vh
     const pageTop = window.pageYOffset * 0.65;
     const newTop = (top - (pageTop * speed));
     const newAngle = (100 + (newTop - 6.5))/100;
@@ -117,20 +117,86 @@ class App extends Component {
     const logo = potatoLogo;
 
     return (
-      <div className="App" style={{ height: `${scrollHeight}px`, position: 'relative'}}>
+      <div
+        className="App"
+        style={{
+          height: `${scrollHeight}px`,
+          position: 'relative'
+        }}
+      >
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
-        <div alt="logo" style={{ backgroundImage: `url(${logo})`, imageRendering: 'WebkitOptimizeContrast', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundColor: 'white', backgroundPosition: 'left center', position: 'fixed', height: '3.5vh', top: '0', left: '0', bottom: '0', right: '0', width: '100vw', zIndex: '6', border: '10px solid white' }} />
+        <div
+          alt="logo"
+          style={{
+            backgroundImage: `url(${logo})`,
+            imageRendering: 'WebkitOptimizeContrast',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: 'white',
+            backgroundPosition: 'left center',
+            position: 'fixed',
+            height: '3.5vh',
+            top: '0',
+            left: '0',
+            bottom: '0',
+            right: '0',
+            width: '100vw',
+            zIndex: '6',
+            border: '10px solid white'
+          }}
+        />
 
-        <svg stroke="none" ref="aboutSectionPoly" fill="none" style={{ height: `${this.state.polyHeight}`, top: `${fromTop}`, width: '100vw', position: 'fixed', zIndex: '5', backgroundColor: 'transparent' }}>
+        <svg
+          stroke="none"
+          ref="aboutSectionPoly"
+          fill="none"
+          style={{
+            height: `${this.state.polyHeight}`,
+            top: `${fromTop}`,
+            width: '100vw',
+            position: 'fixed',
+            zIndex: '5',
+            backgroundColor: 'transparent'
+          }}
+        >
           <polygon ref="polygon" fill="white" points={this.state.polygon} />
         </svg>
 
-        <div ref="aboutSection" style={{ position: 'fixed', zIndex: '6', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)'  }}>
+        <div
+          ref="aboutSection"
+          style={{
+            position: 'fixed',
+            zIndex: '6',
+            left: '50%',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
           <About display={this.state.display} />
         </div>
 
-        <div ref="arrowIcon" style={{ position: 'fixed', left: '50%', top: '3.5vh', zIndex: '4', margin: '0', padding: '0' }}>
-          <FontAwesome name="play" size={this.state.arrowSize} style={{ WebkitTransform: 'rotate(90deg)', MsTransform: 'rotate(90deg)', transform: 'rotate(90deg)', color: 'white' }} />
+        <div
+          ref="arrowIcon"
+          style={{
+            position: 'fixed',
+            width: '100%',
+            textAlign: 'center',
+            top: '4vh',
+            zIndex: '4',
+            padding: '0'
+          }}
+        >
+          <FontAwesome
+            name="play"
+            size={this.state.arrowSize}
+            style={{
+              WebkitTransform: 'rotate(90deg)',
+              MsTransform: 'rotate(90deg)',
+              transform: 'rotate(90deg)',
+              color: 'white',
+              padding: '0px 0px 1.5px 0px',
+            }}
+          />
         </div>
 
         <div ref="videoColumns" style={{ margin: 0, padding: 0 }}>

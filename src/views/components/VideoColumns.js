@@ -10,6 +10,9 @@ import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 const env = runtimeEnv();
 
+const sortVideos = (a, b) =>
+      parseFloat(a.tags[a.tags.length-1].tag) - parseFloat(b.tags[b.tags.length-1].tag);
+
 class VideoColumns extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +48,8 @@ class VideoColumns extends Component {
         }
       }
     );
-    return featuredVideos.map((item, idx) => {
+
+    return featuredVideos.sort(sortVideos).map((item, idx) => {
       let columnWidth;
       let columnHeight;
       let displayVersion;
@@ -78,11 +82,34 @@ class VideoColumns extends Component {
           key={idx}
           onMouseOver={() => this.hoverEvent('block', idx)}
           onMouseOut={() => this.hoverEvent('none', idx)}
-          style={{background: `url(${thumbnail})`, backgroundSize: 'cover', backgroundPosition: 'center center', height: `${columnHeight}vh`, width: `${columnWidth}vw`, position: 'relative'}} >
+          style={{
+            background: `url(${thumbnail})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            height: `${columnHeight}%`,
+            width: `${columnWidth}%`,
+            position: 'relative',
+          }}
+        >
           <Link
             className="video-column-link"
             to={`${item.uri}`}
-            style={{display: `${displayVersion}`, position: 'absolute', fontStyle: 'italic', width: '100px', height: 'auto', margin: '0 auto', top: '50%', left: '50%', WebkitTransform: 'translate(-50%, -50%)', MsTransform: 'translate(-50%, -50%)', transform: 'translate(-50%, -50%)', textAlign: 'center', textDecoration: 'none'}} >
+            style={{
+              display: `${displayVersion}`,
+              position: 'absolute',
+              fontStyle: 'italic',
+              width: '100px',
+              height: 'auto',
+              margin: '0 auto',
+              top: '50%',
+              left: '50%',
+              WebkitTransform: 'translate(-50%, -50%)',
+              MsTransform: 'translate(-50%, -50%)',
+              transform: 'translate(-50%, -50%)',
+              textAlign: 'center',
+              textDecoration: 'none',
+            }}
+          >
             <FontAwesome name="play" size={`${iconSize}`} />
           </Link>
         </div>
@@ -92,7 +119,16 @@ class VideoColumns extends Component {
 
   render() {
     return (
-      <div className="video-column-container" style={{display: 'flex', position: 'fixed', height: '100vh', width: '100vw', margin: '0'}}>
+      <div
+        className="video-column-container"
+        style={{
+          display: 'flex',
+          position: 'fixed',
+          height: '100vh',
+          width: '100vw',
+          margin: '0'
+        }}
+      >
         <WindowResizeListener onResize={windowSize => this.windowResize(windowSize)} />
         { this.renderList() }
       </div>

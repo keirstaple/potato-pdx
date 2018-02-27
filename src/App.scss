@@ -1,11 +1,9 @@
 @font-face {
   font-family: "akkuratl";
-  // src: font-files('fonts/Akkurat-Light.otf', 'fonts/Akkurat-Light.ttf');
   src: url('../public/fonts/Akkurat-Light.otf');
 }
 @font-face {
   font-family: "akkuratb";
-  // src: font-files('fonts/Akkurat-Bold.otf', 'fonts/Akkurat-Bold.ttf');
   src: url('../public/fonts/Akkurat-Bold.otf');
 }
 
@@ -29,37 +27,36 @@ $break-large: 1200px;
     -ms-transform: scale(1.1);
     transform: scale(1.1);
   }
-  &:nth-child(2) {
-    margin: 2px 0;
+  &:first-child {
+    margin: 0 0 1px 0;
     @media screen and (min-width: $break-medium) {
-      margin: 0 5px;
+      margin: 0 2.5px 0 0;
+    }
+  }
+  &:last-child {
+    margin: 1px 0 0 0;
+    @media screen and (min-width: $break-medium) {
+      margin: 0 0 0 2.5px;
+    }
+  }
+  &:not(:first-child):not(:last-child) {
+    margin: 1px 0;
+    @media screen and (min-width: $break-medium) {
+      margin: 0 2.5px;
     }
   }
 }
 
 .video-column-link {
-  // transition: all .5s ease-in-out;
   color: white;
-  // font-weight: bold;
-  // border: solid white 5px;
   &:hover {
-    // color: black;
-    // background-color: white;
     cursor: pointer;
-    // -webkit-transform: scale(1.5);
-    // -ms-transform: scale(1.5);
-    // transform: scale(1.5);
-    // -webkit-animation: rainbow 2s infinite;
-    // -ms-animation: rainbow 2s infinite;
-    // // -o-animation:rainbow 1s infinite;
-    // animation: rainbow 2s infinite;
   }
 }
 
 .contact-us {
   font-family: 'akkuratb';
   margin: 0;
-  // color: #1A1919;
   color: #E89CBA;
   text-shadow: -6.5px 6.5px #1A1919;
 }
@@ -91,64 +88,9 @@ hr {
 
 html, body {
   height: 100%;
-  // overflow-y: scroll;
-  // -webkit-overflow-scrolling: touch;
 }
 
 body {
   margin: 0;
   padding: 0;
 }
-
-// @-webkit-keyframes rainbow {
-// 0% {color: #ff0000;}
-// 10% {color: #ff8000;}
-// 20% {color: #ffff00;}
-// 30% {color: #80ff00;}
-// 40% {color: #00ff00;}
-// 50% {color: #00ff80;}
-// 60% {color: #00ffff;}
-// 70% {color: #0080ff;}
-// 80% {color: #0000ff;}
-// 90% {color: #8000ff;}
-// 100% {color: #ff0080;}
-// }
-// @-ms-keyframes rainbow {
-// 0% {color: #ff0000;}
-// 10% {color: #ff8000;}
-// 20% {color: #ffff00;}
-// 30% {color: #80ff00;}
-// 40% {color: #00ff00;}
-// 50% {color: #00ff80;}
-// 60% {color: #00ffff;}
-// 70% {color: #0080ff;}
-// 80% {color: #0000ff;}
-// 90% {color: #8000ff;}
-// 100% {color: #ff0080;}
-// }
-// // @-o-keyframes rainbow {
-// // 0% {color: #ff0000;}
-// // 10% {color: #ff8000;}
-// // 20% {color: #ffff00;}
-// // 30% {color: #80ff00;}
-// // 40% {color: #00ff00;}
-// // 50% {color: #00ff80;}
-// // 60% {color: #00ffff;}
-// // 70% {color: #0080ff;}
-// // 80% {color: #0000ff;}
-// // 90% {color: #8000ff;}
-// // 100% {color: #ff0080;}
-// // }
-// @keyframes rainbow {
-// 0% {color: #ff0000;}
-// 10% {color: #ff8000;}
-// 20% {color: #ffff00;}
-// 30% {color: #80ff00;}
-// 40% {color: #00ff00;}
-// 50% {color: #00ff80;}
-// 60% {color: #00ffff;}
-// 70% {color: #0080ff;}
-// 80% {color: #0000ff;}
-// 90% {color: #8000ff;}
-// 100% {color: #ff0080;}
-// }
