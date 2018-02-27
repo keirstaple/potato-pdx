@@ -10,6 +10,9 @@ import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 const env = runtimeEnv();
 
+const sortVideos = (a, b) =>
+      parseFloat(a.tags[a.tags.length-1].tag) - parseFloat(b.tags[b.tags.length-1].tag);
+
 class VideoColumns extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +48,8 @@ class VideoColumns extends Component {
         }
       }
     );
-    return featuredVideos.map((item, idx) => {
+
+    return featuredVideos.sort(sortVideos).map((item, idx) => {
       let columnWidth;
       let columnHeight;
       let displayVersion;
@@ -103,7 +107,7 @@ class VideoColumns extends Component {
               MsTransform: 'translate(-50%, -50%)',
               transform: 'translate(-50%, -50%)',
               textAlign: 'center',
-              textDecoration: 'none'
+              textDecoration: 'none',
             }}
           >
             <FontAwesome name="play" size={`${iconSize}`} />
